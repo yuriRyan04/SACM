@@ -1,0 +1,1148 @@
+
+/* =====================================================
+   SACM — PROFESSOR
+   CSS COMPLETO — CABEÇALHO FIXO + PERFIL MAIS ABAIXO
+===================================================== */
+
+/* 1. RESET E VARIÁVEIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-fundo: #030b24;
+    --azul-card: rgba(5, 22, 55, 0.98);
+    --azul-card-hover: #194181;
+    --vermelho: #ff1026;
+    --vermelho-escuro: #4a0712;
+    --vermelho-hover: #c41125;
+    --branco: #ffffff;
+    --texto: #dce6ff;
+    --borda: rgba(255, 16, 38, 0.82);
+    --sombra: 0 8px 24px rgba(0, 0, 0, 0.20);
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--azul-fundo);
+    color: var(--texto);
+    font-family: 'Hind Vadodara', Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 2. CABEÇALHO FIXO */
+
+.topo {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(
+        110deg,
+        #07142e 0%,
+        #091a3a 50%,
+        #06132c 100%
+    );
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 25px;
+    position: relative;
+    z-index: 1000;
+
+    border-bottom: 1px solid var(--vermelho);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== BOTÃO DO MENU ===== */
+.botao-menu {
+    position: fixed;
+    top: 21px;
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 10px;
+
+    background: linear-gradient(145deg, #45101c, #170d22);
+
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.botao-menu:hover {
+    background: var(--vermelho-escuro);
+    box-shadow: 0 0 15px rgba(255, 32, 47, 0.4);
+    transform: scale(1.04);
+}
+
+.botao-menu:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* ===== LOGO SACM ===== */
+.logo-sacm {
+    margin-left: 75px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-sacm img {
+    width: 135px;
+    max-height: 85px;
+    object-fit: contain;
+}
+
+/* ===== TÍTULO DO CABEÇALHO ===== */
+.titulo {
+    min-width: 178px;
+    height: 52px;
+    padding: 0 22px;
+
+    border-radius: 50px;
+    border: 1px solid var(--vermelho);
+
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 0 14px rgba(255, 20, 35, 0.2);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.titulo:hover {
+    background: linear-gradient(135deg, #64101d, #a51b25);
+    box-shadow: 0 0 18px rgba(255, 32, 47, 0.3);
+}
+
+.titulo h2 {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* ===== LOGO DA INSTITUIÇÃO ===== */
+.logo-ceep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-ceep img {
+    width: 110px;
+    max-height: 80px;
+    object-fit: contain;
+}
+/* 4. CONTAINER PRINCIPAL */
+
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+
+    /* Reserva espaço para o cabeçalho fixo */
+    padding-top: 80px;
+}
+
+/* 5. CONTEÚDO
+   O espaçamento superior evita que o perfil fique
+   encostado ou escondido atrás do cabeçalho.
+*/
+
+.conteudo {
+    width: 100%;
+    min-width: 0;
+    min-height: calc(100vh - 80px);
+
+    margin: 0;
+    padding: 55px 33px 33px;
+
+    background: radial-gradient(
+        ellipse at top left,
+        rgba(13, 37, 83, 0.22),
+        transparent 58%
+    );
+}
+
+.conteudo h1,
+.conteudo h2,
+.conteudo h3,
+.conteudo p {
+    overflow-wrap: anywhere;
+}
+
+/* 6. FUNDO ESCURO DO MENU */
+
+.fundo-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fundo-menu.ativo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* 7. MENU LATERAL */
+
+.menu {
+    position: fixed;
+    top: 100px;
+    left: 0;
+
+    width: 350px;
+    max-width: 90vw;
+
+    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px 15px 25px;
+
+    background: linear-gradient(
+        180deg,
+        #081631 0%,
+        #06112a 100%
+    );
+
+    border: 1px solid var(--vermelho);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+
+    box-shadow: 8px 0 25px rgba(0, 0, 0, .35);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    z-index: 2500;
+
+    /* Menu fechado por padrão */
+    transform: translateX(-101%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        transform .3s ease,
+        visibility .3s ease;
+
+    scrollbar-color: #9b1a28 #071329;
+    scrollbar-width: thin;
+}
+
+/* MENU ABERTO */
+
+.menu.menu-aberto {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+/* PERFIL */
+
+.perfil {
+    width: 100%;
+    flex: 0 0 auto;
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.foto-perfil {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.foto-perfil label {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.foto-perfil img {
+    display: block;
+    width: 85px;
+    height: 85px;
+
+    object-fit: cover;
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+
+    box-shadow: 0 0 16px var(--brilho);
+}
+
+#inputFoto {
+    display: none;
+}
+
+/* ÍCONE DE CÂMERA */
+
+.icone-camera {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background: #b51b25;
+    color: white;
+    font-size: 13px;
+}
+
+/* DADOS DO PERFIL */
+
+.dados-perfil {
+    width: 100%;
+    color: white;
+    overflow-wrap: anywhere;
+}
+
+.dados-perfil h3 {
+    margin: 4px 0 8px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.dados-perfil p {
+    margin: 4px 0;
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.dados-perfil span {
+    color: #ff3542;
+    font-weight: bold;
+}
+
+/* SEPARADOR DO MENU */
+
+.separador {
+    width: 90%;
+    height: 1px;
+    flex: 0 0 1px;
+
+    margin: 8px auto 14px;
+
+    background: var(--vermelho);
+    opacity: .85;
+}
+
+/* ÍCONES DE INÍCIO E VOLTAR */
+
+.home {
+    width: 100%;
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    margin-bottom: 20px;
+}
+
+.home a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home img {
+    display: block;
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.home img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* ÍCONES ALTERNATIVOS */
+
+.icones {
+    width: 100%;
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.icones a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icones img {
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.icones img:hover {
+    transform: scale(1.15);
+}
+
+/* BOTÕES DO MENU */
+
+.menu > button {
+    display: flex;
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 290px;
+    min-height: 42px;
+
+    margin: 0 0 8px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+
+    background: linear-gradient(110deg, #0b1a39, #09152f);
+    color: var(--texto);
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+
+    overflow-wrap: anywhere;
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease,
+        color .25s ease;
+}
+
+.menu > button:hover {
+    background: linear-gradient(90deg, #8d0b1b, #570713);
+    color: white;
+
+    transform: translateX(2px);
+    box-shadow: 0 0 13px var(--brilho);
+}
+
+.menu > button:active {
+    transform: scale(.98);
+}
+
+.menu > button.ativo {
+    background: linear-gradient(100deg, #b31b25, #680d19);
+    border-color: var(--vermelho);
+    color: white;
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+/* BOTÃO MONITORES */
+
+.menu button.monitor {
+    width: 114px;
+    min-height: 31px;
+    padding: 5px 12px;
+    margin-bottom: 20px;
+
+    background: #050d29;
+    color: var(--texto-secundario);
+
+    font-size: 15px;
+    text-align: center;
+    cursor: default;
+}
+
+/* 11. CONTAINER DO PROFESSOR */
+
+.professor-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    color: var(--texto);
+}
+
+/* 12. CARTÃO DO PERFIL DO PROFESSOR
+   O margin-top desce o cartão sem afetar o cabeçalho.
+*/
+
+.perfil-professor {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    width: 100%;
+    min-height: 170px;
+
+    margin-top: 25px;
+    margin-bottom: 35px;
+    padding: 28px;
+
+    color: var(--texto);
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+    box-shadow: var(--sombra);
+
+    scroll-margin-top: 110px;
+
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.perfil-professor:hover {
+    border-color: #ff3043;
+    transform: translateY(-2px);
+}
+
+.foto-professor {
+    display: block;
+    flex-shrink: 0;
+
+    width: 100px;
+    height: 100px;
+
+    object-fit: cover;
+    object-position: center;
+
+    color: var(--branco);
+    background: #294b85;
+
+    border: 3px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+}
+
+.informacoes-professor {
+    flex: 1;
+    min-width: 0;
+}
+
+.informacoes-professor h1 {
+    margin: 0 0 14px;
+    color: var(--branco);
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.informacoes-professor p {
+    margin: 6px 0;
+    color: var(--texto);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.informacoes-professor strong {
+    color: var(--branco);
+}
+
+/* 13. TÍTULOS DAS DISCIPLINAS */
+
+.titulo-disciplinas {
+    margin: 0 0 10px;
+    color: var(--branco);
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.descricao-disciplinas {
+    margin: 0 0 28px;
+    color: var(--texto);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* 14. GRADE DE DISCIPLINAS */
+
+.lista-disciplinas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+
+    width: 100%;
+}
+
+.lista-disciplinas:empty {
+    display: none;
+}
+
+/* 15. CARTÕES DE DISCIPLINAS */
+
+.card-disciplina {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+
+    min-width: 0;
+    min-height: 220px;
+    padding: 24px;
+
+    color: var(--texto);
+    text-align: left;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    box-shadow: var(--sombra);
+
+    overflow-wrap: anywhere;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-disciplina:hover {
+    background: var(--azul-card-hover);
+    border-color: #ff3043;
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 18px rgba(255, 0, 30, 0.18),
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card-disciplina:focus-visible {
+    outline: 2px solid var(--branco);
+    outline-offset: 3px;
+}
+
+.icone-disciplina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 52px;
+    height: 52px;
+
+    color: var(--branco);
+    background: linear-gradient(
+        145deg,
+        rgba(20, 57, 110, 0.95),
+        rgba(5, 20, 51, 0.98)
+    );
+
+    border: 1px solid rgba(67, 133, 220, 0.35);
+    border-radius: 12px;
+
+    font-size: 24px;
+}
+
+.card-disciplina h2,
+.card-disciplina h3 {
+    margin: 0 0 4px;
+    color: var(--branco);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.card-disciplina p {
+    margin: 0;
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.info-disciplina {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-disciplina h3 {
+    margin: 0 0 10px;
+    color: var(--branco);
+    font-size: 18px;
+}
+
+.info-disciplina p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.nome-disciplina {
+    color: var(--branco);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.area-disciplina {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+/* 16. BOTÃO VER MONITORES */
+
+.botao-disciplina {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 42px;
+    margin-top: auto;
+    padding: 10px 16px;
+
+    color: var(--branco);
+    background: linear-gradient(90deg, #a70c1b, #650814);
+
+    border: 1px solid #ff3043;
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.botao-disciplina::after {
+    content: "→";
+    font-size: 17px;
+}
+
+.botao-disciplina:hover {
+    background: linear-gradient(90deg, #c41125, #7a0b19);
+    transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(255, 0, 30, 0.22);
+}
+
+.botao-disciplina:focus-visible {
+    outline: 3px solid var(--branco);
+    outline-offset: 3px;
+}
+
+/* 17. MENSAGENS E ESTADOS VAZIOS */
+
+#mensagem,
+.mensagem-professor {
+    width: 100%;
+    margin: 14px 0;
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+#mensagem:empty,
+.mensagem-professor:empty {
+    display: none;
+}
+
+#mensagem.erro,
+.mensagem-professor.erro {
+    color: #ffb6bd;
+}
+
+#mensagem.sucesso,
+.mensagem-professor.sucesso {
+    color: #b6e6c2;
+}
+
+.sem-disciplinas,
+.carregando-disciplinas {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 30px 22px;
+
+    color: var(--texto);
+    text-align: center;
+    line-height: 1.7;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    box-shadow: var(--sombra);
+}
+
+/* 18. TABLETS */
+
+@media (max-width: 1100px) {
+    .conteudo {
+        padding: 45px 28px 28px;
+    }
+
+    .lista-disciplinas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-disciplina {
+        padding: 21px;
+    }
+}
+
+/* 19. CELULARES */
+
+@media (max-width: 700px) {
+    .topo {
+        height: 70px;
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .botao-menu {
+        top: 13px;
+        left: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 27px;
+    }
+
+    .logo-sacm {
+        width: 85px;
+        margin-left: 48px;
+    }
+
+    .logo-sacm img {
+        width: 85px;
+        max-height: 48px;
+    }
+
+    .logo-ceep,
+    .logo-ceep img {
+        width: 65px;
+    }
+
+    .logo-ceep img {
+        max-height: 43px;
+    }
+
+    .titulo {
+        flex: 0 1 200px;
+        width: auto;
+        max-width: 200px;
+        min-height: 27px;
+        padding: 4px 8px;
+    }
+
+    .titulo h2 {
+        font-size: 14px;
+    }
+
+    .container {
+        padding-top: 70px;
+        min-height: calc(100vh - 70px);
+    }
+
+    .menu {
+        top: 70px;
+        left: calc(-1 * min(300px, 88vw));
+
+        width: min(300px, 88vw);
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+
+        padding: 20px 16px;
+    }
+
+    .menu.menu-aberto {
+        left: 0;
+    }
+
+    /* Mantém distância do cabeçalho no celular */
+    .conteudo {
+        min-height: calc(100vh - 70px);
+        padding: 35px 16px 23px;
+    }
+
+    .perfil-professor {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+
+        min-height: 0;
+        margin-top: 20px;
+        margin-bottom: 28px;
+        padding: 22px;
+    }
+
+    .foto-professor {
+        width: 85px;
+        height: 85px;
+    }
+
+    .informacoes-professor {
+        width: 100%;
+    }
+
+    .informacoes-professor h1 {
+        font-size: 24px;
+    }
+
+    .informacoes-professor p {
+        font-size: 13px;
+    }
+
+    .titulo-disciplinas {
+        font-size: 22px;
+    }
+
+    .descricao-disciplinas {
+        margin-bottom: 22px;
+        font-size: 14px;
+    }
+
+    .lista-disciplinas {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card-disciplina {
+        min-height: 190px;
+        padding: 20px;
+    }
+
+    .botao-disciplina {
+        width: 100%;
+    }
+}
+
+/* 20. CELULARES MUITO PEQUENOS */
+
+@media (max-width: 380px) {
+    .topo {
+        padding: 0 7px;
+        gap: 5px;
+    }
+
+    .logo-sacm {
+        width: 58px;
+        margin-left: 45px;
+    }
+
+    .logo-sacm img {
+        width: 58px;
+    }
+
+    .logo-ceep,
+    .logo-ceep img {
+        width: 40px;
+    }
+
+    .titulo {
+        flex: 0 1 140px;
+        max-width: 140px;
+    }
+
+    .titulo h2 {
+        font-size: 12px;
+    }
+
+    .conteudo {
+        padding: 30px 12px 20px;
+    }
+
+    .perfil-professor {
+        margin-top: 18px;
+        padding: 17px;
+    }
+
+    .informacoes-professor h1 {
+        font-size: 21px;
+    }
+
+    .card-disciplina {
+        padding: 16px;
+    }
+}
+
+/* 21. ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =====================================================
+   AJUSTE: DESCER A ÁREA DO PROFESSOR
+===================================================== */
+
+/* Desce todo o conteúdo da página */
+.conteudo {
+    padding-top: 65px;
+}
+
+/* Desce o cartão com foto e dados do professor */
+.perfil-professor {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+/* Mantém o nome e os dados bem visíveis */
+.informacoes-professor {
+    padding-top: 10px;
+}
+
+.informacoes-professor h1 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+.informacoes-professor p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+/* Ajuste para celular */
+@media (max-width: 700px) {
+    .conteudo {
+        padding-top: 45px;
+    }
+
+    .perfil-professor {
+        margin-top: 25px;
+        padding: 22px;
+    }
+
+    .informacoes-professor {
+        padding-top: 0;
+    }
+}

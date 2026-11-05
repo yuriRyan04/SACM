@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Professor</title>
+    <link rel="stylesheet" href="styles 7.css">
+</head>
+<body>
+
+<header class="topo">
+    <button class="botao-menu" onclick="abrirMenu()" aria-label="Abrir menu">☰</button>
+    <div class="logo-sacm"><img src="./img/SACM.png" alt="Logo SACM"></div>
+    <div class="titulo"><h2>MINHAS DISCIPLINAS</h2></div>
+    <div class="logo-ceep"><img src="./img/CEEP.png" alt="Logo CEEP"></div>
+</header>
+
+<aside class="menu" id="menu">
+    <div class="perfil">
+        <div class="foto-perfil">
+            <label for="inputFoto">
+                <img id="fotoUsuario" src="./img/aluno.png" alt="Foto do professor">
+                <span class="icone-camera">📷</span>
+            </label>
+            <input type="file" id="inputFoto" accept="image/jpeg,image/png,image/webp">
+        </div>
+
+        <div class="dados-perfil">
+            <h3 id="nomeUsuario">Carregando...</h3>
+            <p id="linhaTurma" hidden>Turma: <span id="turmaUsuario">—</span></p>
+            <p>Matrícula: <span id="matriculaUsuario">—</span></p>
+        </div>
+    </div>
+
+    <div class="separador"></div>
+
+        <div class="home">
+            <a href="index.html">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+            <a href="#" onclick="history.back(); return false;">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+    <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='professor.html'"
+        >
+            MINHAS DISCIPLINAS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='cadastro-monitor.html'"
+        >
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-professor.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+</aside>
+
+<main class="conteudo">
+    <div class="professor-container">
+
+        <section class="perfil-professor">
+            <img id="fotoProfessor" class="foto-professor"
+                src="./img/aluno.png" alt="Foto do professor">
+
+            <div class="informacoes-professor">
+                <h1 id="nomeProfessor">Carregando professor...</h1>
+                <p><strong>Matrícula:</strong> <span id="matriculaProfessor">—</span></p>
+                <p><strong>Disciplinas vinculadas:</strong>
+                    <span id="quantidadeDisciplinas">0</span>
+                </p>
+            </div>
+        </section>
+
+        <section class="secao-disciplinas">
+            <h2 class="titulo-disciplinas">Disciplinas que leciona</h2>
+            <p class="descricao-disciplinas">
+                Selecione uma disciplina para consultar seus monitores.
+            </p>
+
+            <p id="mensagem" class="mensagem" role="status" aria-live="polite">
+                Carregando suas disciplinas...
+            </p>
+
+            <div id="listaDisciplinas" class="lista-disciplinas"></div>
+        </section>
+    </div>
+</main>
+
+<script src="./js/menu.js"></script>
+<script src="./js/perfil.js"></script>
+<script src="./js/professor.js"></script>
+</body>
+</html>

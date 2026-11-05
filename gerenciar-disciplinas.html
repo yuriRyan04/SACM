@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Gerenciar Disciplinas</title>
+    <link rel="stylesheet" href="styles 2.css">
+</head>
+<body>
+
+    <header class="topo">
+        <button class="botao-menu" type="button"
+            onclick="abrirMenu()" aria-label="Abrir menu">☰</button>
+
+        <div class="logo-sacm">
+            <img src="./img/SACM.png" alt="Logo SACM">
+        </div>
+
+        <div class="titulo">
+            <h2>GERENCIAMENTO DE DISCIPLINAS</h2>
+        </div>
+
+        <div class="logo-ceep">
+            <img src="./img/CEEP.png" alt="Logo CEEP">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="menu" id="menu">
+            <div class="perfil">
+                <div class="foto-perfil">
+                    <label for="inputFoto">
+                        <img id="fotoUsuario" src="./img/aluno.png"
+                            alt="Foto de perfil">
+                        <span class="icone-camera">📷</span>
+                    </label>
+
+                    <input type="file" id="inputFoto"
+                        accept="image/jpeg,image/png,image/webp">
+                </div>
+
+                <div class="dados-perfil">
+                    <h3 id="nomeUsuario">Carregando...</h3>
+                    <p>Matrícula: <span id="matriculaUsuario">...</span></p>
+                </div>
+            </div>
+
+            <div class="separador"></div>
+
+            <div class="home">
+                <a href="index.html" aria-label="Página inicial">
+                    <img src="./img/casa.png" alt="Casa">
+                </a>
+
+                <a href="#" onclick="history.back(); return false;"
+                    aria-label="Voltar">
+                    <img src="./img/seta.png" alt="Voltar">
+                </a>
+            </div>
+
+         <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-monitor.html'"
+        >
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas.html'"
+        >
+           GERENCIAMENTO DE DISCIPLINAS
+        </button>
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas-professores.html'"
+        >
+            GERENCIAMENTO DE DISCIPLINAS PARA PROFESSORES
+        </button>
+         <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-gestao.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+        </aside>
+
+        <main class="conteudo">
+            <section class="gerenciamento">
+
+                <div class="cabecalho-tabela">
+                    <h2>Gerenciar disciplinas</h2>
+                </div>
+
+                <div class="formulario-gerenciamento">
+                    <label for="area">Área de conhecimento:</label>
+
+                    <select id="area" name="area" required>
+                        <option value="LINGUAGENS">LINGUAGENS</option>
+                        <option value="NATUREZA">NATUREZA</option>
+                        <option value="HUMANAS">HUMANAS</option>
+                        <option value="MATEMÁTICA">MATEMÁTICA</option>
+                        <option value="Base Técnica / INFORMÁTICA">
+                            Base Técnica / INFORMÁTICA
+                        </option>
+                        <option value="Base Técnica / REDES">
+                            Base Técnica / REDES
+                        </option>
+                    </select>
+                </div>
+
+                <form class="formulario formulario-disciplinas"
+                    id="formDisciplina" onsubmit="return false;">
+
+                    <input type="hidden" id="idDisciplina"
+                        name="idDisciplina">
+
+                    <label for="nomeDisciplina">
+                        Nome da disciplina:
+                    </label>
+
+                    <input type="text" id="nomeDisciplina" name="nome"
+                        maxlength="100"
+                        placeholder="Digite o nome da disciplina" required>
+
+                    <label for="limiteMonitores">
+                        Limite de monitores por turma:
+                    </label>
+
+                    <input type="number" id="limiteMonitores"
+                        name="limite_monitores"
+                        min="1" max="100" step="1" value="2" required>
+
+                    <small>
+                        Esse limite vale para cada combinação de série,
+                        turma e curso. O padrão é 2 monitores.
+                    </small>
+
+                    <fieldset class="grupo-opcoes">
+                        <legend>Séries atendidas</legend>
+
+                        <div class="opcoes-checkbox">
+                            <label>
+                                <input type="checkbox" name="series"
+                                    value="Todas">
+                                Todas as séries
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="series"
+                                    value="1ª série">
+                                1ª série
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="series"
+                                    value="2ª série">
+                                2ª série
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="series"
+                                    value="3ª série">
+                                3ª série
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="grupo-opcoes">
+                        <legend>Cursos atendidos</legend>
+
+                        <div class="opcoes-checkbox">
+                            <label>
+                                <input type="checkbox" name="cursos"
+                                    value="Todos">
+                                Todos os cursos
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="cursos"
+                                    value="Informática">
+                                Informática
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="cursos"
+                                    value="Redes">
+                                Redes
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="acoes-formulario">
+                        <button type="button" class="btn-salvar"
+                            id="botaoSalvar"
+                            onclick="adicionarDisciplina()">
+                            + Adicionar disciplina
+                        </button>
+
+                        <button type="button" class="btn-cancelar"
+                            id="botaoCancelar" hidden>
+                            Cancelar edição
+                        </button>
+                    </div>
+                </form>
+
+                <div class="tabela-responsiva">
+                    <table class="tabela-gerenciar-disciplinas">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Disciplina</th>
+                                <th>Área</th>
+                                <th>Séries</th>
+                                <th>Cursos</th>
+                                <th>Limite por turma</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabelaDisciplinas">
+                            <tr>
+                                <td colspan="7">
+                                    Carregando disciplinas...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="mensagem" class="mensagem"
+                    role="status" aria-live="polite"></p>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="js/gerenciar-disciplinas.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+</html>

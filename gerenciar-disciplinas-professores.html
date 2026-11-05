@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Disciplinas dos Professores</title>
+    <link rel="stylesheet" href="./styles 11.css">
+</head>
+<body>
+<header class="topo">
+    <button class="botao-menu" id="botaoMenu" type="button"
+            onclick="abrirMenu()" aria-label="Abrir menu"
+            aria-expanded="false">☰</button>
+    <div class="logo-sacm"><img src="./img/SACM.png" alt="Logo SACM"></div>
+    <div class="titulo"><h2>DISCIPLINAS DOS PROFESSORES</h2></div>
+    <div class="logo-ceep"><img src="./img/CEEP.png" alt="Logo CEEP"></div>
+</header>
+
+<div class="container">
+    <div class="fundo-menu" id="fundoMenu" onclick="fecharMenu()"></div>
+
+    <aside class="menu" id="menu">
+        <div class="perfil">
+            <div class="foto-perfil">
+                <label for="inputFoto">
+                    <img id="fotoUsuario" src="./img/aluno.png" alt="Foto de perfil">
+                    <span class="icone-camera">📷</span>
+                </label>
+                <input type="file" id="inputFoto"
+                       accept="image/jpeg,image/png,image/webp">
+            </div>
+            <div class="dados-perfil">
+                <h3 id="nomeUsuario">Carregando...</h3>
+                <p>Matrícula: <span id="matriculaUsuario">...</span></p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+        <div class="home">
+            <a href="index.html" title="Início">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+            <a href="#" onclick="history.back(); return false;" title="Voltar">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-monitor.html'"
+        >
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas.html'"
+        >
+           GERENCIAMENTO DE DISCIPLINAS
+        </button>
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas-professores.html'"
+        >
+            GERENCIAMENTO DE DISCIPLINAS PARA PROFESSORES
+        </button>
+         <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-gestao.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+    </aside>
+
+    <main class="conteudo">
+        <section class="gerenciamento">
+            <div class="cabecalho-secao">
+                <span class="etiqueta">ÁREA DA GESTÃO</span>
+                <h1>PROFESSORES CADASTRADOS</h1>
+                <p>Pesquise um professor e atribua as disciplinas que ele ministra.</p>
+            </div>
+
+            <label for="pesquisaProfessor">NOME OU MATRÍCULA:</label>
+            <div class="barra-busca-professor">
+                <input type="search" id="pesquisaProfessor"
+                       placeholder="Digite o nome ou a matrícula..."
+                       autocomplete="off">
+                <button type="button" id="buscarProfessor"
+                        class="botao botao-principal">BUSCAR PROFESSOR</button>
+            </div>
+
+            <div class="acoes-pesquisa">
+                <button type="button" id="mostrarTodos"
+                        class="botao botao-secundario">MOSTRAR TODOS</button>
+                <button type="button" id="adicionarDisciplinas"
+                        class="botao botao-principal">ADICIONAR DISCIPLINAS</button>
+            </div>
+
+            <div class="total-professores">
+                <span>Total de professores cadastrados</span>
+                <strong id="totalProfessores">0</strong>
+            </div>
+
+            <p id="mensagemLista" class="mensagem" role="status"
+               aria-live="polite"></p>
+
+            <div class="tabela-container">
+                <table class="tabela-professores">
+                    <thead>
+                        <tr>
+                            <th>Professor</th>
+                            <th>Matrícula</th>
+                            <th>Disciplinas</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaProfessores">
+                        <tr>
+                            <td colspan="4" class="estado-vazio">
+                                Carregando professores...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="./js/disciplinas-professores.js" defer></script>
+<script src="./js/menu.js" defer></script>
+<script src="./js/perfil.js" defer></script>
+</body>
+</html>

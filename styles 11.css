@@ -1,0 +1,1261 @@
+
+/* ==========================================================
+   SACM — DISCIPLINAS DOS PROFESSORES
+   CSS COMPLETO
+   AZUL-MARINHO + VERMELHO NEON
+========================================================== */
+
+/* ==========================================================
+   1. RESET E VARIÁVEIS
+========================================================== */
+
+:root {
+    --fundo: #050d29;
+    --fundo-secundario: #081735;
+    --fundo-menu: #07132e;
+    --fundo-card: #081631;
+
+    --vermelho: #ff202f;
+    --vermelho-escuro: #a51b20;
+    --vermelho-hover: #c51c29;
+
+    --texto: #e8edff;
+    --texto-secundario: #c5d0ed;
+
+    --borda: #263655;
+    --sucesso: #36d399;
+    --erro: #ff6575;
+    --aviso: #ffd166;
+
+    --brilho: rgba(255, 32, 47, 0.45);
+    --raio: 12px;
+    --sombra: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ==========================================================
+   2. CABEÇALHO
+========================================================== */
+
+.topo {
+    position: relative;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--vermelho);
+    background: linear-gradient(
+        110deg,
+        #07142e,
+        #091a3a,
+        #06132c
+    );
+}
+
+.botao-menu {
+    position: fixed;
+    z-index: 4000;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--vermelho);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #45101c, #170d22);
+    color: white;
+    font-size: 26px;
+    line-height: 1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.botao-menu:hover {
+    background: linear-gradient(145deg, #751421, #351020);
+}
+
+.botao-menu:active {
+    transform: scale(0.96);
+}
+
+.logo-sacm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    margin-left: 65px;
+}
+
+.logo-sacm img {
+    display: block;
+    width: 125px;
+    max-height: 68px;
+    object-fit: contain;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 55%;
+    min-height: 45px;
+    padding: 8px 22px;
+    border: 1px solid var(--vermelho);
+    border-radius: 50px;
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+    box-shadow: 0 0 12px rgba(255, 32, 47, 0.12);
+}
+
+.titulo h2 {
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.logo-ceep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 75px;
+}
+
+.logo-ceep img {
+    display: block;
+    width: 100px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+/* ==========================================================
+   3. ESTRUTURA E MENU LATERAL
+========================================================== */
+
+.container {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+}
+
+.menu-lateral,
+.menu {
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    z-index: 2500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    max-width: 90vw;
+    height: calc(100vh - 80px);
+    height: calc(100dvh - 80px);
+    padding: 15px 15px 25px;
+    background: linear-gradient(180deg, #081631 0%, #06112a 100%);
+    border: 1px solid var(--vermelho);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 8px 0 25px rgba(0, 0, 0, 0.35);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: translateX(-101%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+    scrollbar-color: #9b1a28 #071329;
+    scrollbar-width: thin;
+}
+
+.menu-lateral.menu-aberto,
+.menu.menu-aberto,
+body.menu-aberto .menu-lateral,
+body.menu-aberto .menu {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.fundo-menu {
+    position: fixed;
+    inset: 80px 0 0;
+    z-index: 2400;
+    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+body.menu-aberto .fundo-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu-lateral::-webkit-scrollbar,
+.menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu-lateral::-webkit-scrollbar-track,
+.menu::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.menu-lateral::-webkit-scrollbar-thumb,
+.menu::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+/* ==========================================================
+   4. PERFIL
+========================================================== */
+
+.perfil-menu,
+.perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 18px 10px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.foto-container,
+.foto-perfil {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.foto-perfil img,
+.foto-container img {
+    display: block;
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+    box-shadow: 0 0 16px var(--brilho);
+}
+
+#inputFoto {
+    display: none;
+}
+
+.icone-camera {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #b51b25;
+    color: white;
+    font-size: 13px;
+}
+
+.perfil-menu,
+.perfil,
+.dados-perfil {
+    color: white;
+    overflow-wrap: anywhere;
+}
+
+.perfil-menu h3,
+.perfil h3,
+.dados-perfil h3 {
+    margin: 4px 0 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.perfil-menu p,
+.perfil p,
+.dados-perfil p {
+    margin: 4px 0;
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.perfil-menu span,
+.perfil span,
+.dados-perfil span {
+    color: #ff3542;
+    font-weight: bold;
+}
+
+.separador-menu,
+.separador {
+    width: 90%;
+    height: 1px;
+    flex: 0 0 1px;
+    margin: 8px auto 14px;
+    background: var(--vermelho);
+    opacity: 0.85;
+}
+
+/* ==========================================================
+   5. NAVEGAÇÃO E ÍCONES
+========================================================== */
+
+.navegacao-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    gap: 35px;
+    width: 100%;
+    margin: 10px 0 20px;
+}
+
+.home a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home img {
+    display: block;
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.home img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* ==========================================================
+   6. BOTÕES DO MENU
+========================================================== */
+
+.menu-lateral .item-menu,
+.menu .item-menu,
+.botao-menu-lateral,
+.menu-lateral > button,
+.menu > button {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 290px;
+    min-height: 42px;
+    margin: 0 0 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+    background: linear-gradient(110deg, #0b1a39, #09152f);
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+    transition: background 0.25s ease, border-color 0.25s ease,
+        transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.menu-lateral .item-menu.ativo,
+.menu .item-menu.ativo,
+.botao-menu-lateral.ativo,
+.menu-lateral > button.ativo,
+.menu > button.ativo {
+    background: linear-gradient(110deg, #0b1a39, #09152f);
+    border-color: var(--vermelho);
+    color: var(--texto);
+    box-shadow: none;
+    transform: none;
+}
+
+.menu-lateral .item-menu:hover,
+.menu .item-menu:hover,
+.botao-menu-lateral:hover,
+.menu-lateral > button:hover,
+.menu > button:hover {
+    background: linear-gradient(90deg, #8d0b1b, #570713);
+    border-color: var(--vermelho);
+    color: white;
+    transform: translateX(2px);
+    box-shadow: 0 0 13px var(--brilho);
+}
+
+.menu-lateral .item-menu:active,
+.menu .item-menu:active,
+.botao-menu-lateral:active,
+.menu-lateral > button:active,
+.menu > button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================
+   7. CONTEÚDO PRINCIPAL
+========================================================== */
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    min-width: 0;
+    min-height: calc(100vh - 80px);
+    padding: 35px 25px 50px;
+    background:
+        radial-gradient(ellipse at 80% 15%, rgba(31, 43, 83, 0.22), transparent 55%),
+        linear-gradient(135deg, #050d29, #07122e);
+}
+
+.gerenciamento,
+.painel-cadastro {
+    width: 100%;
+    max-width: 1000px;
+    min-width: 0;
+    padding: 30px;
+    border: 1px solid rgba(255, 32, 47, 0.3);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(8, 23, 53, 0.98), rgba(5, 15, 39, 0.98));
+    box-shadow: var(--sombra);
+}
+
+.cabecalho-secao {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+    background: rgba(255, 32, 47, 0.15);
+    color: #ff6575;
+    border: 1px solid rgba(255, 32, 47, 0.3);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cabecalho-secao h1,
+.cabecalho-secao h2,
+.painel-cadastro > h2 {
+    margin: 0 0 12px;
+    color: white;
+    font-size: 25px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.cabecalho-secao p,
+.descricao {
+    margin: 0 0 25px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* ==========================================================
+   8. CAMPOS, BUSCA E LABELS
+========================================================== */
+
+.gerenciamento label,
+.campo label {
+    display: block;
+    margin: 12px 0 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.gerenciamento input[type="search"],
+.gerenciamento input[type="text"],
+.gerenciamento input[type="number"],
+.gerenciamento select,
+.gerenciamento textarea,
+.campo input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 45px;
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: #080f28;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gerenciamento input:focus,
+.gerenciamento select:focus,
+.gerenciamento textarea:focus,
+.campo input:focus {
+    border-color: var(--vermelho);
+    box-shadow: 0 0 10px rgba(255, 32, 47, 0.22);
+}
+
+.gerenciamento input::placeholder,
+.gerenciamento textarea::placeholder,
+.campo input::placeholder {
+    color: #8492b1;
+    opacity: 1;
+}
+
+.gerenciamento select option {
+    background: #080f28;
+    color: white;
+}
+
+.barra-busca-professor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.barra-busca-professor input {
+    flex: 1;
+}
+
+.acoes-pesquisa {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0 20px;
+}
+
+.total-professores {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    margin: 18px 0;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #080f28;
+}
+
+.total-professores span {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.total-professores strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 6px;
+    background: var(--vermelho);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* ==========================================================
+   9. BOTÕES GERAIS
+========================================================== */
+
+.botao,
+.botoes-formulario button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 11px 18px;
+    border: 1px solid var(--vermelho);
+    border-radius: 9px;
+    background: linear-gradient(110deg, #a51b20, #710e19);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botao:hover:not(:disabled),
+.botoes-formulario button:hover:not(:disabled) {
+    background: linear-gradient(110deg, #c51c29, #951421);
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+.botao:active:not(:disabled),
+.botoes-formulario button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.botao-secundario {
+    border-color: #60708d;
+    background: linear-gradient(110deg, #172746, #0b1933);
+}
+
+.botao-secundario:hover:not(:disabled) {
+    background: linear-gradient(110deg, #263b5f, #15294a);
+    box-shadow: none;
+}
+
+.botao-excluir {
+    border-color: var(--vermelho);
+    background: linear-gradient(110deg, #820b12, #4c0408);
+}
+
+.botao-excluir:hover:not(:disabled) {
+    background: linear-gradient(110deg, #a5131b, #65060b);
+}
+
+/* ==========================================================
+   10. TABELA DE PROFESSORES
+========================================================== */
+
+.tabela-container {
+    width: 100%;
+    margin-top: 15px;
+    overflow-x: auto;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #080f28;
+}
+
+.tabela-professores {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-professores thead {
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+}
+
+.tabela-professores th {
+    padding: 14px 16px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--vermelho);
+}
+
+.tabela-professores td {
+    padding: 14px 16px;
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(38, 54, 85, 0.5);
+    vertical-align: middle;
+}
+
+.tabela-professores tbody tr:hover {
+    background: rgba(255, 32, 47, 0.05);
+}
+
+.tabela-professores td:first-child {
+    color: white;
+    font-weight: 700;
+}
+
+.disciplinas-resumo {
+    overflow-wrap: anywhere;
+}
+
+.acoes-tabela {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acoes-tabela .botao {
+    min-height: 32px;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.estado-vazio {
+    padding: 25px !important;
+    text-align: center;
+    color: var(--texto-secundario) !important;
+}
+
+/* ==========================================================
+   11. DADOS DO PROFESSOR
+========================================================== */
+
+.dados-professor {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    margin-bottom: 25px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #080f28;
+}
+
+.avatar-professor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--brilho);
+}
+
+.dados-professor h3 {
+    margin-bottom: 4px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dados-professor p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.dados-professor strong {
+    color: white;
+}
+
+/* ==========================================================
+   12. BARRA DE SELEÇÃO
+========================================================== */
+
+.barra-selecao {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #080f28;
+}
+
+.barra-selecao > span {
+    flex: 1;
+    color: var(--texto-secundario);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.barra-selecao strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    margin-left: 4px;
+    border-radius: 6px;
+    background: var(--vermelho);
+    color: white;
+    font-size: 13px;
+}
+
+/* ==========================================================
+   13. CARTÕES DE DISCIPLINAS
+========================================================== */
+
+.lista-disciplinas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.disciplina-card,
+.item-disciplina {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #080f28;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease,
+        box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.disciplina-card:hover,
+.item-disciplina:hover {
+    border-color: var(--vermelho);
+    background: #0d173b;
+    transform: translateY(-2px);
+}
+
+.disciplina-card.selecionada,
+.item-disciplina:has(input[type="checkbox"]:checked) {
+    border-color: var(--vermelho);
+    background: linear-gradient(135deg, rgba(58, 13, 27, 0.6), rgba(8, 23, 53, 0.9));
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+.disciplina-card input[type="checkbox"],
+.item-disciplina input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--vermelho);
+    cursor: pointer;
+}
+
+.disciplina-info,
+.item-disciplina > span {
+    flex: 1;
+    min-width: 0;
+}
+
+.disciplina-info h4,
+.item-disciplina strong {
+    display: block;
+    margin-bottom: 6px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.disciplina-area,
+.item-disciplina small {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background: rgba(255, 32, 47, 0.12);
+    color: #ff6575;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.disciplina-info p {
+    margin-top: 5px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Informações extras da disciplina */
+
+.disciplina-detalhes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.disciplina-detalhes div {
+    padding: 9px;
+    border: 1px solid rgba(38, 54, 85, 0.8);
+    border-radius: 7px;
+    background: rgba(5, 13, 41, 0.7);
+}
+
+.disciplina-detalhes span {
+    display: block;
+    margin-bottom: 4px;
+    color: #9baaca;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.disciplina-detalhes strong {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--texto);
+    font-size: 12px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   14. AÇÕES FINAIS
+========================================================== */
+
+.acoes-finais {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borda);
+}
+
+/* ==========================================================
+   15. MENSAGENS E PAINÉIS
+========================================================== */
+
+.mensagem {
+    width: 100%;
+    min-width: 0;
+    margin-top: 12px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.mensagem:empty {
+    display: none;
+}
+
+.mensagem.sucesso {
+    padding: 10px 12px;
+    border: 1px solid rgba(54, 211, 153, 0.4);
+    border-radius: 8px;
+    background: rgba(54, 211, 153, 0.08);
+    color: var(--sucesso);
+}
+
+.mensagem.erro {
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 101, 117, 0.4);
+    border-radius: 8px;
+    background: rgba(255, 101, 117, 0.08);
+    color: var(--erro);
+}
+
+.mensagem.aviso {
+    color: var(--aviso);
+}
+
+#painelEdicao[hidden],
+#painelDisciplinas[hidden],
+#dadosProfessor[hidden] {
+    display: none !important;
+}
+
+/* ==========================================================
+   16. ACESSIBILIDADE
+========================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* ==========================================================
+   17. TABLETS
+========================================================== */
+
+@media (max-width: 768px) {
+    .topo {
+        gap: 6px;
+        padding: 0 10px;
+    }
+
+    .logo-sacm {
+        min-width: 65px;
+        margin-left: 45px;
+    }
+
+    .logo-sacm img {
+        width: 80px;
+    }
+
+    .titulo {
+        max-width: 55%;
+        padding: 8px 10px;
+    }
+
+    .titulo h2 {
+        font-size: 13px;
+    }
+
+    .logo-ceep {
+        min-width: 45px;
+    }
+
+    .logo-ceep img {
+        width: 55px;
+    }
+
+    .menu-lateral,
+    .menu {
+        width: 320px;
+        max-width: 90vw;
+    }
+
+    .conteudo {
+        padding: 22px 12px 30px;
+        gap: 20px;
+    }
+
+    .gerenciamento,
+    .painel-cadastro {
+        padding: 22px 16px;
+        border-radius: 14px;
+    }
+
+    .cabecalho-secao h1,
+    .cabecalho-secao h2,
+    .painel-cadastro > h2 {
+        font-size: 21px;
+    }
+
+    .lista-disciplinas {
+        grid-template-columns: 1fr;
+    }
+
+    .disciplina-detalhes {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ==========================================================
+   18. CELULARES
+========================================================== */
+
+@media (max-width: 450px) {
+    .topo {
+        height: 70px;
+        gap: 4px;
+        padding: 0 6px;
+    }
+
+    .botao-menu {
+        top: 13px;
+        left: 8px;
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+    }
+
+    .logo-sacm {
+        min-width: 50px;
+        margin-left: 37px;
+    }
+
+    .logo-sacm img {
+        width: 60px;
+    }
+
+    .titulo {
+        max-width: 57%;
+        min-height: 35px;
+        padding: 7px;
+    }
+
+    .titulo h2 {
+        font-size: 10px;
+        letter-spacing: 0;
+    }
+
+    .logo-ceep {
+        min-width: 35px;
+    }
+
+    .logo-ceep img {
+        width: 42px;
+    }
+
+    .menu-lateral,
+    .menu {
+        top: 70px;
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+        width: 320px;
+        max-width: 90vw;
+        padding: 12px 12px 20px;
+    }
+
+    .fundo-menu {
+        inset: 70px 0 0;
+    }
+
+    .menu-lateral .item-menu,
+    .menu .item-menu,
+    .botao-menu-lateral,
+    .menu-lateral > button,
+    .menu > button {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .conteudo {
+        min-height: calc(100vh - 70px);
+        padding: 18px 9px 25px;
+    }
+
+    .gerenciamento,
+    .painel-cadastro {
+        padding: 18px 12px;
+    }
+
+    .cabecalho-secao h1,
+    .cabecalho-secao h2,
+    .painel-cadastro > h2 {
+        font-size: 19px;
+    }
+
+    .cabecalho-secao p,
+    .descricao {
+        font-size: 13px;
+    }
+
+    .barra-busca-professor {
+        flex-direction: column;
+    }
+
+    .barra-busca-professor .botao {
+        width: 100%;
+    }
+
+    .acoes-pesquisa,
+    .acoes-finais {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .acoes-pesquisa .botao,
+    .acoes-finais .botao {
+        width: 100%;
+    }
+
+    .barra-selecao {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .barra-selecao > span {
+        flex: initial;
+    }
+
+    .barra-selecao .botao {
+        width: 100%;
+    }
+
+    .dados-professor {
+        align-items: flex-start;
+        padding: 14px;
+    }
+
+    .avatar-professor {
+        width: 45px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .disciplina-detalhes {
+        grid-template-columns: 1fr;
+    }
+}

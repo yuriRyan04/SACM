@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030b24">
+
+    <title>SACM - Gerenciamento de Monitores</title>
+    <link rel="stylesheet" href="styles 4.css">
+</head>
+
+<body>
+
+<header class="topo">
+    <button class="botao-menu" type="button"
+            onclick="abrirMenu()" aria-label="Abrir menu">☰</button>
+
+    <div class="logo-sacm">
+        <img src="./img/SACM.png" alt="Logo SACM">
+    </div>
+
+    <div class="titulo">
+        <h2>GERENCIAMENTO DE MONITORES</h2>
+    </div>
+
+    <div class="logo-ceep">
+        <img src="./img/CEEP.png" alt="Logo CEEP">
+    </div>
+</header>
+
+<div class="container">
+
+    <aside class="menu" id="menu">
+
+        <div class="perfil">
+            <div class="foto-perfil">
+                <label for="inputFoto">
+                    <img id="fotoUsuario" src="./img/aluno.png"
+                         alt="Foto de perfil">
+                    <span class="icone-camera">📷</span>
+                </label>
+
+                <input type="file" id="inputFoto"
+                       accept="image/jpeg,image/png,image/webp">
+            </div>
+
+            <div class="dados-perfil">
+                <h3 id="nomeUsuario">Carregando...</h3>
+                <p>Matrícula: <span id="matriculaUsuario">...</span></p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <div class="home">
+            <a href="index.html" aria-label="Início">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+            <a href="#" onclick="history.back(); return false;"
+               aria-label="Voltar">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+        <button class="botao-menu-lateral" type="button"
+                onclick="window.location.href='gerenciar-monitor.html'">
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button class="botao-menu-lateral" type="button"
+                onclick="window.location.href='gerenciar-disciplinas.html'">
+            GERENCIAMENTO DE DISCIPLINAS
+        </button>
+
+        <button class="botao-menu-lateral" type="button"
+                onclick="window.location.href='gerenciar-disciplinas-professores.html'">
+            GERENCIAMENTO DE DISCIPLINAS PARA PROFESSORES
+        </button>
+
+        <button class="botao-menu-lateral" type="button"
+                onclick="window.location.href='creditos-gestao.html'">
+            CRÉDITOS DOS CRIADORES
+        </button>
+
+    </aside>
+
+    <main class="conteudo">
+
+        <!-- CADASTRO DE MONITORES -->
+        <section class="gerenciamento">
+
+            <h2>CADASTRAR MONITOR</h2>
+
+            <label for="matriculaMonitor">MATRÍCULA DO ALUNO:</label>
+            <input type="text" id="matriculaMonitor"
+                   placeholder="Digite a matrícula do aluno"
+                   autocomplete="off">
+
+            <button type="button" id="btnBuscar">BUSCAR ALUNO</button>
+
+            <div id="dadosAluno" style="display:none">
+                <h3>DADOS DO ALUNO</h3>
+
+                <p><strong>NOME:</strong>
+                    <span id="nomeAluno"></span>
+                </p>
+
+                <p><strong>TURMA:</strong>
+                    <span id="serieAluno"></span>
+                    <span id="turmaAluno"></span>
+                    <span id="cursoAluno"></span>
+                </p>
+
+                <p><strong>MATRÍCULA:</strong>
+                    <span id="matriculaAluno"></span>
+                </p>
+            </div>
+
+            <div id="campoDisciplina" style="display:none">
+
+                <label for="disciplinaMonitor">DISCIPLINA:</label>
+
+                <select id="disciplinaMonitor">
+                    <option value="">Carregando disciplinas...</option>
+                </select>
+
+                <div id="informacoesDisciplina"
+                     class="informacoes-disciplina"
+                     style="display:none"
+                     aria-live="polite">
+
+                    <h3>INFORMAÇÕES DA DISCIPLINA</h3>
+
+                    <div class="disciplina-nome">
+                        <span class="rotulo-info">DISCIPLINA</span>
+                        <strong id="infoNomeDisciplina">-</strong>
+                    </div>
+
+                    <div class="disciplina-detalhes">
+
+                        <span class="etiqueta-disciplina">
+                            Área:
+                            <strong id="infoAreaDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Série(s):
+                            <strong id="infoSeriesDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Curso(s):
+                            <strong id="infoCursosDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Limite de monitores:
+                            <strong id="infoLimiteDisciplina">-</strong>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="btnCadastrar"
+                    style="display:none">
+                CADASTRAR MONITOR
+            </button>
+
+            <p id="mensagem" role="status" aria-live="polite"></p>
+
+        </section>
+
+
+        <!-- CONSULTA DE MONITORES -->
+        <section class="gerenciamento lista-gerenciamento">
+
+            <h2>MONITORES CADASTRADOS</h2>
+
+            <p>
+                Selecione uma disciplina para consultar os alunos
+                cadastrados como monitores.
+            </p>
+
+            <label for="filtroDisciplina">ESCOLHA A DISCIPLINA:</label>
+
+            <select id="filtroDisciplina">
+                <option value="">Selecione uma disciplina</option>
+            </select>
+
+            <p id="mensagemLista" role="status" aria-live="polite"></p>
+
+            <div id="listaMonitores">
+                <p>
+                    Selecione uma disciplina para consultar os monitores.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- CERTIFICADOS DE MONITORIA -->
+        <section class="gerenciamento certificados-gerenciamento"
+                 id="secaoCertificados">
+
+            <h2>CERTIFICADOS DE MONITORIA</h2>
+
+            <p>
+                Selecione uma disciplina, informe a carga horária
+                e o semestre da monitoria para emitir os certificados.
+            </p>
+
+            <label for="certificadoDisciplina">DISCIPLINA:</label>
+
+            <select id="certificadoDisciplina">
+                <option value="">Carregando disciplinas...</option>
+            </select>
+
+            <label for="cargaHorariaCertificado">
+                CARGA HORÁRIA (HORAS):
+            </label>
+
+            <input
+                type="number"
+                id="cargaHorariaCertificado"
+                name="carga_horaria"
+                min="1"
+                max="10000"
+                step="1"
+                placeholder="Ex.: 40"
+                required
+            >
+
+            <label for="periodoCertificado">
+                SEMESTRE DA MONITORIA:
+            </label>
+
+            <select id="periodoCertificado" name="periodo" required>
+                <option value="">Selecione o semestre</option>
+                <option value="1º">1º semestre</option>
+                <option value="2º">2º semestre</option>
+                <option value="1º e 2º">1º e 2º semestres</option>
+            </select>
+
+            <div class="acoes-certificados">
+
+                <button type="button" id="btnCarregarCertificados">
+                    CONSULTAR MONITORES
+                </button>
+
+                <button type="button" id="btnBaixarTodosCertificados">
+                    SALVAR E BAIXAR TODOS (ZIP)
+                </button>
+
+            </div>
+
+            <p id="mensagemCertificados"
+               role="status"
+               aria-live="polite"></p>
+
+            <div id="listaCertificados">
+                <p>
+                    Selecione uma disciplina para consultar os monitores
+                    e gerar seus certificados.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="js/monitor.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/perfil.js"></script>
+
+</body>
+</html>

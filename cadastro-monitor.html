@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Cadastro de Monitor</title>
+    <link rel="stylesheet" href="styles 4.css">
+</head>
+
+<body>
+
+<header class="topo">
+    <button class="botao-menu" onclick="abrirMenu()" aria-label="Abrir menu">☰</button>
+
+    <div class="logo-sacm">
+        <img src="./img/SACM.png" alt="Logo SACM">
+    </div>
+
+    <div class="titulo">
+        <h2>GERENCIAMENTO DE MONITORES</h2>
+    </div>
+
+    <div class="logo-ceep">
+        <img src="./img/CEEP.png" alt="Logo CEEP">
+    </div>
+</header>
+
+<div class="container">
+
+    <aside class="menu" id="menu">
+        <div class="perfil">
+            <div class="foto-perfil">
+                <label for="inputFoto">
+                    <img id="fotoUsuario" src="./img/aluno.png" alt="Foto de perfil">
+                    <span class="icone-camera">📷</span>
+                </label>
+
+                <input type="file" id="inputFoto"
+                       accept="image/jpeg,image/png,image/webp">
+            </div>
+
+            <div class="dados-perfil">
+                <h3 id="nomeUsuario">Carregando...</h3>
+                <p>Matrícula: <span id="matriculaUsuario">...</span></p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <div class="home">
+            <a href="index.html">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+            <a href="#" onclick="history.back(); return false;">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='professor.html'"
+        >
+            MINHAS DISCIPLINAS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='cadastro-monitor.html'"
+        >
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-professor.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+    </aside>
+
+    <main class="conteudo">
+
+        <section class="gerenciamento">
+            <h2>CADASTRAR MONITOR</h2>
+
+            <label for="matriculaMonitor">MATRÍCULA DO ALUNO:</label>
+
+            <input type="text"
+                   id="matriculaMonitor"
+                   placeholder="Digite a matrícula">
+
+            <button type="button" id="btnBuscar">
+                BUSCAR ALUNO
+            </button>
+
+            <div id="dadosAluno" style="display:none">
+                <h3>DADOS DO ALUNO</h3>
+
+                <p><strong>NOME:</strong>
+                    <span id="nomeAluno"></span>
+                </p>
+
+                <p><strong>TURMA:</strong>
+                    <span id="serieAluno"></span>
+                    <span id="turmaAluno"></span>
+                    <span id="cursoAluno"></span>
+                </p>
+
+                <p><strong>MATRÍCULA:</strong>
+                    <span id="matriculaAluno"></span>
+                </p>
+            </div>
+
+            <div id="campoDisciplina" style="display:none">
+
+                <label for="disciplinaMonitor">DISCIPLINA:</label>
+
+                <select id="disciplinaMonitor">
+                    <option value="">Carregando disciplinas...</option>
+                </select>
+
+                <!-- CARTÃO COM AS INFORMAÇÕES DA DISCIPLINA -->
+                <div id="informacoesDisciplina"
+                     class="informacoes-disciplina"
+                     style="display:none"
+                     aria-live="polite">
+
+                    <h3>INFORMAÇÕES DA DISCIPLINA</h3>
+
+                    <div class="disciplina-nome">
+                        <span class="rotulo-info">DISCIPLINA</span>
+                        <strong id="infoNomeDisciplina">-</strong>
+                    </div>
+
+                    <div class="disciplina-detalhes">
+
+                        <span class="etiqueta-disciplina">
+                            Área:
+                            <strong id="infoAreaDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Série(s):
+                            <strong id="infoSeriesDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Curso(s):
+                            <strong id="infoCursosDisciplina">-</strong>
+                        </span>
+
+                        <span class="etiqueta-disciplina">
+                            Limite de monitores:
+                            <strong id="infoLimiteDisciplina">-</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button"
+                    id="btnCadastrar"
+                    style="display:none">
+                CADASTRAR MONITOR
+            </button>
+
+            <p id="mensagem" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="gerenciamento lista-gerenciamento">
+            <h2>MONITORES CADASTRADOS</h2>
+
+            <label for="filtroDisciplina">ESCOLHA A DISCIPLINA:</label>
+
+            <select id="filtroDisciplina">
+                <option value="">Selecione uma disciplina</option>
+            </select>
+
+            <p id="mensagemLista" role="status" aria-live="polite"></p>
+
+            <div id="listaMonitores">
+                <p>Selecione uma disciplina para consultar os monitores.</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="js/monitor.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/perfil.js"></script>
+
+</body>
+</html>

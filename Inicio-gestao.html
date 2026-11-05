@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SACM - Início</title>
+
+    <link
+        rel="stylesheet"
+        href="styles 1.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header class="topo">
+
+
+     
+
+        <button
+            class="botao-menu"
+            onclick="abrirMenu()"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
+
+
+       
+
+        <div class="logo-sacm">
+
+            <img
+                src="./img/SACM.png"
+                alt="Logo SACM"
+            >
+
+        </div>
+
+
+       
+
+        <div class="titulo">
+
+            <h2>INÍCIO</h2>
+
+        </div>
+
+
+       
+
+        <div class="logo-ceep">
+
+            <img
+                src="./img/CEEP.png"
+                alt="Logo CEEP"
+            >
+
+        </div>
+
+
+    </header>
+
+
+    
+    <aside
+        class="menu"
+        id="menu"
+    >
+
+
+
+        <div class="perfil">
+
+
+          
+
+            <div class="foto-perfil">
+
+                <label for="inputFoto">
+
+                    <img
+                    id="fotoUsuario"
+                    src="./img/aluno.png"
+                    alt="Foto de perfil"
+                    >
+
+                    <span class="icone-camera">
+                        📷
+                    </span>
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="inputFoto"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+            </div>
+
+
+           
+
+            <div class="dados-perfil">
+
+                <h3 id="nomeUsuario">
+                    Carregando...
+                </h3>
+
+
+                
+
+
+                <p>
+
+                    Matrícula:
+
+                    <span id="matriculaUsuario">
+                        ...
+                    </span>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+       
+
+        <div class="separador"></div>
+
+
+        
+
+        <div class="home">
+
+            <a href="index.html">
+
+                <img src="./img/casa.png" alt="Casa">
+
+            </a>
+
+        </div>
+
+
+       
+
+         <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-monitor.html'"
+        >
+            GERENCIAMENTO DE MONITORES
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas.html'"
+        >
+           GERENCIAMENTO DE DISCIPLINAS
+        </button>
+        <button
+            class="botao-menu-lateral"
+            onclick="window.location.href='gerenciar-disciplinas-professores.html'"
+        >
+            GERENCIAMENTO DE DISCIPLINAS PARA PROFESSORES
+        </button>
+         <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-gestao.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+       
+
+    </aside>
+
+
+    
+
+    <main class="conteudo">
+
+
+        <h1>
+            Seja bem-vindo ao SACM –
+            Sistema de Auxílio e Controle de Monitoria!
+        </h1>
+
+
+        <p>
+
+            Aqui você encontrará uma plataforma pensada
+            para facilitar a comunicação entre alunos,
+            monitores e professores, tornando o processo
+            de aprendizagem mais organizado, acessível
+            e eficiente.
+
+        </p>
+
+
+        <p>
+
+            Com o SACM, você pode localizar monitores,
+            agendar horários de atendimento, acompanhar
+            atividades e fortalecer ainda mais seu
+            desempenho acadêmico.
+
+        </p>
+
+
+        <p>
+
+            Aproveite todos os recursos disponíveis e
+            conte conosco para apoiar sua jornada de estudos.
+
+        </p>
+
+
+        <h3>
+            Bom uso!
+        </h3>
+
+
+    </main>
+
+
+    
+
+    <script src="./js/menu.js"></script>
+
+    <script src="./js/perfil.js"></script>
+
+
+</body>
+
+</html>

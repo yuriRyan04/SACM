@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SACM - Disciplina</title>
+
+    <link
+        rel="stylesheet"
+        href="styles 3.css"
+    >
+
+</head>
+
+
+<body>
+
+
+   
+   <header class="topo">
+
+<button
+            class="botao-menu"
+            onclick="abrirMenu()"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
+
+    <div class="logo-sacm">
+
+            <img
+                src="./img/SACM.png"
+                alt="Logo SACM"
+            >
+
+        </div>
+
+
+        <div class="titulo">
+
+            <h2 id="tituloDisciplina">
+                CARREGANDO...
+            </h2>
+        </div>
+
+        <div class="logo-ceep">
+
+            <img
+                src="./img/CEEP.png"
+                alt="Logo CEEP"
+            >
+
+        </div>
+
+</header>
+
+
+<div class="container">
+
+<aside class="menu" id="menu">
+
+   
+    <div class="perfil">
+
+        <div class="foto-perfil">
+
+            <label for="inputFoto">
+
+                <img
+                    id="fotoUsuario"
+                    src="./img/aluno.png"
+                    alt="Foto de perfil"
+                >
+
+                <span class="icone-camera">
+                    📷
+                </span>
+
+            </label>
+
+            <input
+                type="file"
+                id="inputFoto"
+                accept="image/jpeg,image/png,image/webp"
+            >
+
+        </div>
+
+        <div class="dados-perfil">
+
+            <h3 id="nomeUsuario">
+                Carregando...
+            </h3>
+
+            <p>
+                Turma:
+                <span id="turmaUsuario">
+                    ...
+                </span>
+            </p>
+
+            <p>
+                Matrícula:
+                <span id="matriculaUsuario">
+                    ...
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEPARADOR -->
+
+    <div class="separador"></div>
+
+
+   
+    <div class="home">
+
+        <a href="index.html">
+
+            <img src="./img/casa.png" alt="Casa">
+
+        </a>
+        
+         <a href="#" onclick="history.back(); return false;">
+            <img src="./img/seta.png" alt="Seta">
+        </a>   
+
+    </div>
+
+
+   
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='monitorias.html'"
+    >
+        MINHAS MONITORIAS
+    </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='meus-agendamentos.html'"
+        >
+            MEUS AGENDAMENTOS
+        </button>
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Linguagens.html'"
+    >
+        LINGUAGENS
+    </button>
+
+
+    
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Natureza.html'"
+    >
+        NATUREZA
+    </button>
+
+
+   
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Humanas.html'"
+    >
+        HUMANAS
+    </button>
+
+
+    
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Matematica.html'"
+    >
+        MATEMÁTICA
+    </button>
+
+
+    
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Info.html'"
+    >
+       INFORMÁTICA
+    </button>
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Redes.html'"
+    >
+        REDES DE COMPUTADORES
+    </button>
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+
+</aside>
+
+
+
+        
+
+        <main class="conteudo">
+
+
+            <div class="agendamento">
+
+
+                <h2 id="tituloAgendamento">
+                    MONITORES
+                </h2>
+
+
+                <p id="mensagem">
+                    Carregando...
+                </p>
+
+
+                <div
+                    id="dadosMonitores"
+                    style="display: none;"
+                >
+
+
+                    <h3>
+                        Monitores disponíveis:
+                    </h3>
+
+
+                    <div id="monitoresConteudo"></div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    
+
+    <script src="js/disciplina.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/perfil.js"></script>
+
+</body>
+
+</html>

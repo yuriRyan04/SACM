@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SACM - Termo de Autorização</title>
+
+    <link rel="stylesheet" href="./styles 12.css">
+    <script src="./js/termo-autorizacao.js" defer></script>
+</head>
+
+<body>
+    <main class="pagina">
+        <section class="cartao-termo">
+
+            <header class="cabecalho">
+                <div class="logo-sacm">
+
+            <img
+                src="./img/SACM.png"
+                alt="Logo SACM"
+            >
+
+        </div>
+
+            </header>
+
+            <div class="separador"></div>
+
+            <section class="conteudo">
+                <span class="etiqueta">AUTORIZAÇÃO DE USO</span>
+
+                <h1>Termo de Autorização</h1>
+
+                <p class="introducao">
+                    Leia as informações abaixo e confirme sua concordância
+                    para continuar.
+                </p>
+
+                <div class="termo-texto">
+                    <h2>1. Finalidade do sistema</h2>
+                    <p>
+                        O SACM é um sistema desenvolvido para auxiliar na
+                        organização e no controle das atividades de monitoria
+                        escolar, permitindo consultar disciplinas, monitores,
+                        horários, locais e agendamentos.
+                    </p>
+
+                    <h2>2. Uso das informações</h2>
+                    <p>
+                        As informações fornecidas serão utilizadas para
+                        permitir o funcionamento do sistema e apoiar as
+                        atividades de monitoria da instituição.
+                    </p>
+
+                    <h2>3. Responsabilidade do usuário</h2>
+                    <p>
+                        O usuário deve utilizar o sistema de maneira
+                        responsável, respeitando as regras da instituição
+                        e a privacidade das demais pessoas.
+                    </p>
+
+                    <h2>4. Proteção de dados</h2>
+                    <p>
+                        Os dados pessoais devem ser acessados e utilizados
+                        para finalidades legítimas relacionadas ao SACM,
+                        com medidas adequadas de segurança e controle
+                        de acesso.
+                    </p>
+
+                    <h2>5. Registro do aceite</h2>
+                    <p>
+                        Ao marcar a caixa de confirmação e selecionar
+                        “Aceitar termo”, o sistema registrará o aceite
+                        e a data e hora correspondentes.
+                    </p>
+
+                    <p class="aviso">
+                        Em caso de dúvidas sobre este termo ou sobre o
+                        tratamento de dados, procure a equipe responsável
+                        pelo sistema ou a instituição.
+                    </p>
+                </div>
+
+                <div class="confirmacao">
+                    <label for="aceiteTermo" class="checkbox-label">
+                        <input
+                            type="checkbox"
+                            id="aceiteTermo"
+                            name="aceiteTermo"
+                        >
+
+                        <span>
+                            Li e compreendi as informações acima e concordo
+                            com os termos de utilização do SACM.
+                        </span>
+                    </label>
+                </div>
+
+               <button type="button" id="btnAceitar" class="botao-aceitar" disabled>
+    
+                Aceitar termo de autorização
+
+            </button>
+
+                <p id="mensagemEstado" class="informacao-final" aria-live="polite">
+                    Marque a caixa acima para habilitar o botão.
+                </p>
+            </section>
+
+            <footer class="rodape">
+                SACM &copy; 2026 — Sistema de Auxílio e Controle de Monitoria
+            </footer>
+
+        </section>
+    </main>
+</body>
+</html>

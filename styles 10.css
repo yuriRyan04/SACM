@@ -1,0 +1,1097 @@
+
+/* ==========================================================
+   SACM — CADASTRO DE PROFESSORES
+   CSS COMPLETO
+   AZUL-MARINHO + VERMELHO NEON
+   MENU LATERAL COM BOTÕES UNIFORMES
+========================================================== */
+
+/* 1. RESET E VARIÁVEIS */
+
+:root {
+    --fundo: #050d29;
+    --fundo-secundario: #081735;
+    --fundo-menu: #07132e;
+    --fundo-card: #081631;
+
+    --vermelho: #ff202f;
+    --vermelho-escuro: #a51b20;
+    --vermelho-hover: #c51c29;
+
+    --texto: #e8edff;
+    --texto-secundario: #c5d0ed;
+
+    --borda: #263655;
+    --sucesso: #36d399;
+    --erro: #ff6575;
+    --aviso: #ffd166;
+
+    --brilho: rgba(255, 32, 47, 0.45);
+    --raio: 12px;
+    --sombra: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: var(--fundo);
+    color: var(--texto);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ==========================================================
+   2. CABEÇALHO
+========================================================== */
+
+.topo {
+    position: relative;
+    z-index: 3000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+
+    border-bottom: 1px solid var(--vermelho);
+
+    background: linear-gradient(
+        110deg,
+        #07142e,
+        #091a3a,
+        #06132c
+    );
+}
+
+/* Botão de abrir o menu */
+
+.botao-menu {
+    position: fixed;
+    z-index: 4000;
+
+    top: 15px;
+    left: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 10px;
+
+    background: linear-gradient(
+        145deg,
+        #45101c,
+        #170d22
+    );
+
+    color: white;
+    font-size: 26px;
+    line-height: 1;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.botao-menu:hover {
+    background: linear-gradient(
+        145deg,
+        #751421,
+        #351020
+    );
+}
+
+.botao-menu:active {
+    transform: scale(0.96);
+}
+
+/* Logo SACM */
+
+.logo-sacm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 100px;
+    margin-left: 65px;
+}
+
+.logo-sacm img {
+    display: block;
+
+    width: 125px;
+    max-height: 68px;
+
+    object-fit: contain;
+}
+
+/* Título do cabeçalho */
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 55%;
+    min-height: 45px;
+    padding: 8px 22px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #3a0d1b,
+        #75111b
+    );
+
+    box-shadow: 0 0 12px rgba(255, 32, 47, 0.12);
+}
+
+.titulo h2 {
+    margin: 0;
+
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Logo CEEP */
+
+.logo-ceep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 75px;
+}
+
+.logo-ceep img {
+    display: block;
+
+    width: 100px;
+    max-height: 65px;
+
+    object-fit: contain;
+}
+
+/* ==========================================================
+   3. MENU LATERAL
+========================================================== */
+
+.menu-lateral {
+    position: fixed;
+
+    top: 80px;
+    bottom: 0;
+    left: 0;
+
+    z-index: 2500;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 350px;
+    max-width: 90vw;
+
+    height: calc(100vh - 80px);
+    height: calc(100dvh - 80px);
+
+    padding: 15px 15px 25px;
+
+    background: linear-gradient(
+        180deg,
+        #081631 0%,
+        #06112a 100%
+    );
+
+    border: 1px solid var(--vermelho);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+
+    box-shadow: 8px 0 25px rgba(0, 0, 0, 0.35);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transform: translateX(-101%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    scrollbar-color: #9b1a28 #071329;
+    scrollbar-width: thin;
+}
+
+/* Estado aberto */
+
+.menu-lateral.menu-aberto {
+    transform: translateX(0);
+
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Barra de rolagem */
+
+.menu-lateral::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu-lateral::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.menu-lateral::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+/* ==========================================================
+   4. PERFIL DO USUÁRIO
+========================================================== */
+
+.perfil-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 0 0 auto;
+
+    width: 100%;
+    padding: 18px 10px;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.foto-container {
+    position: relative;
+
+    width: 85px;
+    height: 85px;
+
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.foto-perfil {
+    display: block;
+
+    width: 85px;
+    height: 85px;
+
+    object-fit: cover;
+
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+
+    box-shadow: 0 0 16px var(--brilho);
+}
+
+/* Campo de upload de foto */
+
+#inputFoto {
+    display: none;
+}
+
+/* Ícone de câmera, caso utilizado */
+
+.icone-camera {
+    position: absolute;
+
+    right: -2px;
+    bottom: -2px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background: #b51b25;
+    color: white;
+
+    font-size: 13px;
+}
+
+/* Nome e informações do perfil */
+
+.perfil-menu .dados-perfil,
+.perfil-menu {
+    color: white;
+    overflow-wrap: anywhere;
+}
+
+.perfil-menu h3,
+.dados-perfil h3 {
+    margin: 4px 0 8px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.perfil-menu p,
+.dados-perfil p {
+    margin: 4px 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.perfil-menu span,
+.dados-perfil span {
+    color: #ff3542;
+    font-weight: bold;
+}
+
+/* ==========================================================
+   5. SEPARADOR
+========================================================== */
+
+.separador-menu {
+    width: 90%;
+    height: 1px;
+
+    flex: 0 0 1px;
+
+    margin: 8px auto 14px;
+
+    background: var(--vermelho);
+    opacity: 0.85;
+}
+
+/* ==========================================================
+   6. NAVEGAÇÃO DO MENU
+========================================================== */
+
+.navegacao-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 0 0 auto;
+
+    width: 100%;
+}
+
+/* Ícones de início e voltar */
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    gap: 35px;
+
+    width: 100%;
+    margin: 10px 0 20px;
+}
+
+.home a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home img {
+    display: block;
+
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.home img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* Outros ícones */
+
+.icones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    gap: 30px;
+
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.icones a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icones img {
+    display: block;
+
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.icones img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* ==========================================================
+   7. BOTÕES DO MENU
+   TODOS COM A MESMA APARÊNCIA
+========================================================== */
+
+/* Links */
+
+.menu-lateral .item-menu {
+    display: flex;
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 290px;
+    min-height: 42px;
+
+    margin: 0 0 8px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+
+    background: linear-gradient(
+        110deg,
+        #0b1a39,
+        #09152f
+    );
+
+    color: var(--texto);
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    text-align: center;
+    text-decoration: none;
+
+    overflow-wrap: anywhere;
+
+    cursor: pointer;
+
+    box-shadow: none;
+    transform: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Botões */
+
+.menu-lateral > button {
+    display: flex;
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 290px;
+    min-height: 42px;
+
+    margin: 0 0 8px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+
+    background: linear-gradient(
+        110deg,
+        #0b1a39,
+        #09152f
+    );
+
+    color: var(--texto);
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+
+    cursor: pointer;
+
+    box-shadow: none;
+    transform: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Impede que a classe ativo deixe o botão vermelho permanentemente */
+
+.menu-lateral .item-menu.ativo,
+.menu-lateral > button.ativo {
+    background: linear-gradient(
+        110deg,
+        #0b1a39,
+        #09152f
+    );
+
+    border-color: var(--vermelho);
+
+    color: var(--texto);
+
+    box-shadow: none;
+    transform: none;
+}
+
+/* Vermelho apenas ao passar o mouse */
+
+.menu-lateral .item-menu:hover,
+.menu-lateral .item-menu.ativo:hover,
+.menu-lateral > button:hover,
+.menu-lateral > button.ativo:hover {
+    background: linear-gradient(
+        90deg,
+        #8d0b1b,
+        #570713
+    );
+
+    border-color: var(--vermelho);
+
+    color: white;
+
+    transform: translateX(2px);
+
+    box-shadow: 0 0 13px var(--brilho);
+}
+
+/* Efeito ao clicar */
+
+.menu-lateral .item-menu:active,
+.menu-lateral > button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================
+   8. CONTEÚDO PRINCIPAL
+========================================================== */
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+
+    width: 100%;
+    min-width: 0;
+    min-height: calc(100vh - 80px);
+
+    padding: 35px 25px 50px;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 15%,
+            rgba(31, 43, 83, 0.22),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #050d29,
+            #07122e
+        );
+}
+
+/* Painel do cadastro */
+
+.painel-cadastro {
+    width: 100%;
+    max-width: 850px;
+    min-width: 0;
+
+    padding: 30px;
+
+    border: 1px solid rgba(255, 32, 47, 0.3);
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(8, 23, 53, 0.98),
+        rgba(5, 15, 39, 0.98)
+    );
+
+    box-shadow: var(--sombra);
+}
+
+.painel-cadastro > h2 {
+    margin: 0 0 12px;
+
+    color: white;
+
+    font-size: 25px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.descricao {
+    margin: 0 0 25px;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* ==========================================================
+   9. FORMULÁRIO
+========================================================== */
+
+#formCadastroProfessor {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    width: 100%;
+    min-width: 0;
+}
+
+.campo {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 8px;
+}
+
+.campo label {
+    display: block;
+
+    margin: 8px 0;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.campo input,
+#formCadastroProfessor input {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 45px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    background: #080f28;
+    color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.campo input:focus,
+#formCadastroProfessor input:focus {
+    border-color: var(--vermelho);
+
+    box-shadow: 0 0 10px rgba(255, 32, 47, 0.22);
+}
+
+.campo input::placeholder {
+    color: #8492b1;
+    opacity: 1;
+}
+
+/* ==========================================================
+   10. BOTÕES DO FORMULÁRIO
+========================================================== */
+
+.botoes-formulario {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+.botoes-formulario button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 11px 18px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 9px;
+
+    background: linear-gradient(
+        110deg,
+        #a51b20,
+        #710e19
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.botoes-formulario button:hover:not(:disabled) {
+    background: linear-gradient(
+        110deg,
+        #c51c29,
+        #951421
+    );
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+.botoes-formulario button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* Botão limpar */
+
+.botoes-formulario #btnLimpar {
+    border-color: #60708d;
+
+    background: linear-gradient(
+        110deg,
+        #172746,
+        #0b1933
+    );
+}
+
+.botoes-formulario #btnLimpar:hover {
+    background: linear-gradient(
+        110deg,
+        #263b5f,
+        #15294a
+    );
+}
+
+/* ==========================================================
+   11. MENSAGENS
+========================================================== */
+
+.mensagem {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 12px;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.mensagem:empty {
+    display: none;
+}
+
+.mensagem.sucesso {
+    padding: 10px 12px;
+
+    border: 1px solid rgba(54, 211, 153, 0.4);
+    border-radius: 8px;
+
+    background: rgba(54, 211, 153, 0.08);
+
+    color: var(--sucesso);
+}
+
+.mensagem.erro {
+    padding: 10px 12px;
+
+    border: 1px solid rgba(255, 101, 117, 0.4);
+    border-radius: 8px;
+
+    background: rgba(255, 101, 117, 0.08);
+
+    color: var(--erro);
+}
+
+.mensagem.aviso {
+    color: var(--aviso);
+}
+
+/* ==========================================================
+   12. ACESSIBILIDADE
+========================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* ==========================================================
+   13. TABLETS
+========================================================== */
+
+@media (max-width: 768px) {
+    .topo {
+        gap: 6px;
+        padding: 0 10px;
+    }
+
+    .logo-sacm {
+        min-width: 65px;
+        margin-left: 45px;
+    }
+
+    .logo-sacm img {
+        width: 80px;
+    }
+
+    .titulo {
+        max-width: 55%;
+        padding: 8px 10px;
+    }
+
+    .titulo h2 {
+        font-size: 13px;
+    }
+
+    .logo-ceep {
+        min-width: 45px;
+    }
+
+    .logo-ceep img {
+        width: 55px;
+    }
+
+    .menu-lateral {
+        width: 320px;
+        max-width: 90vw;
+    }
+
+    .conteudo {
+        padding: 22px 12px 30px;
+        gap: 20px;
+    }
+
+    .painel-cadastro {
+        padding: 22px 16px;
+        border-radius: 14px;
+    }
+
+    .painel-cadastro > h2 {
+        font-size: 21px;
+    }
+}
+
+/* ==========================================================
+   14. CELULARES
+========================================================== */
+
+@media (max-width: 450px) {
+    .topo {
+        height: 70px;
+        gap: 4px;
+        padding: 0 6px;
+    }
+
+    .botao-menu {
+        top: 13px;
+        left: 8px;
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 22px;
+    }
+
+    .logo-sacm {
+        min-width: 50px;
+        margin-left: 37px;
+    }
+
+    .logo-sacm img {
+        width: 60px;
+    }
+
+    .titulo {
+        max-width: 57%;
+        min-height: 35px;
+        padding: 7px;
+    }
+
+    .titulo h2 {
+        font-size: 10px;
+        letter-spacing: 0;
+    }
+
+    .logo-ceep {
+        min-width: 35px;
+    }
+
+    .logo-ceep img {
+        width: 42px;
+    }
+
+    .menu-lateral {
+        top: 70px;
+
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+
+        width: 320px;
+        max-width: 90vw;
+
+        padding: 12px 12px 20px;
+    }
+
+    .menu-lateral .item-menu,
+    .menu-lateral > button {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .conteudo {
+        min-height: calc(100vh - 70px);
+        padding: 18px 9px 25px;
+    }
+
+    .painel-cadastro {
+        padding: 18px 12px;
+    }
+
+    .painel-cadastro > h2 {
+        font-size: 19px;
+    }
+
+    .descricao {
+        font-size: 13px;
+    }
+
+    .botoes-formulario {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .botoes-formulario button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | SACM</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <!-- SACM - Configuração do aplicativo PWA -->
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#06093E">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Compatibilidade com iPhone -->
+<link rel="apple-touch-icon" href="./img/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SACM">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="./js/index.js" defer></script>
+</head>
+
+<body>
+    <main class="pagina-login">
+
+        <section class="lado-logo">
+            <img
+                src="./img/logo.png"
+                alt="Logo SACM"
+                class="logo-sacm"
+            >
+        </section>
+
+        <section class="lado-formulario">
+            <div class="login-container">
+
+                <div class="cabecalho-login">
+                    <h1>Bem-vindo ao SACM</h1>
+                    <p>Sistema de Auxílio e Controle de Monitoria</p>
+                </div>
+
+                <div id="mensagemInicial" class="mensagem-inicial">
+                    <h2>Acesse sua conta</h2>
+                    <p>Selecione seu perfil para continuar.</p>
+                </div>
+
+                <div class="opcoes-perfil" aria-label="Selecione seu perfil">
+
+                    <button
+                        type="button"
+                        class="perfil-btn ativo"
+                        data-perfil="aluno"
+                        aria-pressed="true"
+                    >
+                        <span class="perfil-icone" aria-hidden="true">♟</span>
+                        <span>Aluno</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="perfil-btn"
+                        data-perfil="professor"
+                        aria-pressed="false"
+                    >
+                        <span class="perfil-icone" aria-hidden="true">♙</span>
+                        <span>Professor</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="perfil-btn"
+                        data-perfil="gestao"
+                        aria-pressed="false"
+                    >
+                        <span class="perfil-icone" aria-hidden="true">⚙</span>
+                        <span>Gestão</span>
+                    </button>
+
+                </div>
+
+                <form id="formLogin" autocomplete="on">
+
+                    <input
+                        type="hidden"
+                        id="perfil"
+                        name="perfil"
+                        value="aluno"
+                    >
+
+                    <div class="campo-login">
+                        <label for="matricula">Matrícula</label>
+                        <input
+                            type="text"
+                            id="matricula"
+                            name="matricula"
+                            placeholder="Digite sua matrícula"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-login">
+                        <label for="senha">Senha</label>
+
+                        <div class="campo-senha">
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="toggleSenha"
+                                class="botao-olho"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false"
+                            >
+                                <svg
+                                    id="iconeOlho"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p
+                        id="mensagem"
+                        class="mensagem"
+                        role="alert"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        type="submit"
+                        id="botaoEntrar"
+                        class="botao-login"
+                    >
+                        <span aria-hidden="true">↪</span>
+                        Entrar
+                    </button>
+
+                </form>
+
+                <!-- Aparece somente quando Professor for selecionado -->
+                <div
+                    id="linkCadastroProfessor"
+                    class="link-cadastro-professor"
+                    hidden
+                >
+                    <span>Não tem cadastro?</span>
+                    <a href="./cadastro-professores.html">Cadastre-se</a>
+                </div>
+
+                <footer class="rodape-login">
+                    CEEP Professora Lourdinha Guerra
+                </footer>
+
+            </div>
+        </section>
+
+    </main>
+    <script src="./pwa.js" defer></script>
+</body>
+</html>

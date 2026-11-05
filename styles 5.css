@@ -1,0 +1,2320 @@
+/* =====================================================
+   SACM — MINHAS MONITORIAS
+   CSS COMPLETO — STYLE 5 + MENU STYLE 6
+   COM NOTIFICAÇÕES E RESPONSIVIDADE
+===================================================== */
+
+/* =====================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-fundo: #030b24;
+    --azul-card: rgba(3, 17, 48, 0.94);
+    --azul-card-hover: rgba(9, 34, 78, 0.98);
+    --azul-menu: rgba(3, 14, 39, 0.98);
+
+    --vermelho: #ff1026;
+    --vermelho-escuro: #4a0712;
+
+    --branco: #ffffff;
+    --cinza: #cdcdcd;
+    --cinza-escuro: #8d96a8;
+
+    --verde: #b6e6c2;
+    --verde-botao: #198754;
+    --verde-botao-hover: #157347;
+
+    --amarelo: #f6d66b;
+    --vermelho-claro: #f4b6b6;
+
+    --borda: rgba(255, 20, 40, 0.88);
+    --texto: #dce6ff;
+    --texto-secundario: #aebbd4;
+
+    --brilho: rgba(255, 16, 38, 0.25);
+
+    --sombra:
+        0 0 18px rgba(255, 0, 30, 0.10),
+        0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--azul-fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: wait;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: #75111b;
+    color: var(--branco);
+}
+
+/* =====================================================
+   2. CABEÇALHO SUPERIOR
+===================================================== */
+
+.topo {
+    width: 100%;
+    height: 100px;
+    padding: 0 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+
+    position: relative;
+    z-index: 1000;
+
+    background: linear-gradient(
+        110deg,
+        #07142e 0%,
+        #091a3a 50%,
+        #06132c 100%
+    );
+
+    border-bottom: 1px solid var(--vermelho);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* BOTÃO DO MENU */
+
+.botao-menu {
+    position: fixed;
+    top: 21px;
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 10px;
+
+    background: linear-gradient(145deg, #45101c, #170d22);
+    color: #ffffff;
+
+    font-size: 30px;
+    line-height: 1;
+
+    z-index: 4000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.botao-menu:hover {
+    background: var(--vermelho-escuro);
+    box-shadow: 0 0 15px rgba(255, 32, 47, 0.4);
+    transform: scale(1.04);
+}
+
+.botao-menu:focus-visible,
+.botao-notificacoes:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* LOGO SACM */
+
+.logo-sacm {
+    margin-left: 75px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-sacm img {
+    width: 135px;
+    max-height: 85px;
+    object-fit: contain;
+}
+
+/* TÍTULO DO CABEÇALHO */
+
+.titulo {
+    min-width: 178px;
+    min-height: 52px;
+    padding: 0 22px;
+
+    border-radius: 50px;
+    border: 1px solid var(--vermelho);
+
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 0 14px rgba(255, 20, 35, 0.2);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.titulo:hover {
+    background: linear-gradient(135deg, #64101d, #a51b25);
+    box-shadow: 0 0 18px rgba(255, 32, 47, 0.3);
+}
+
+.titulo h2 {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* LOGO DA INSTITUIÇÃO */
+
+.logo-ceep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-ceep img {
+    width: 110px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+/* =====================================================
+   3. CONTAINER PRINCIPAL
+===================================================== */
+
+.container {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    display: flex;
+}
+
+.conteudo {
+    width: 100%;
+    min-width: 0;
+
+    min-height: calc(100vh - 100px);
+
+    padding: 35px;
+    margin-left: 0;
+
+    background: radial-gradient(
+        ellipse at top left,
+        rgba(13, 37, 83, 0.22),
+        transparent 58%
+    );
+
+    transition: margin-left 0.3s ease;
+}
+
+/* =====================================================
+   4. FUNDO ESCURO DO MENU
+===================================================== */
+
+.fundo-menu {
+    position: fixed;
+    inset: 100px 0 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 2000;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.fundo-menu.ativo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   5. MENU LATERAL
+===================================================== */
+
+.menu {
+    position: fixed;
+    top: 100px;
+    left: 0;
+
+    width: 350px;
+    max-width: 90vw;
+
+    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px 15px 25px;
+
+    background: linear-gradient(
+        180deg,
+        #081631 0%,
+        #06112a 100%
+    );
+
+    border: 1px solid var(--vermelho);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+
+    box-shadow: 8px 0 25px rgba(0, 0, 0, 0.35);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    z-index: 2500;
+
+    transform: translateX(-101%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    scrollbar-color: #9b1a28 #071329;
+    scrollbar-width: thin;
+}
+
+.menu.menu-aberto {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu::-webkit-scrollbar,
+#listaNotificacoes::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu::-webkit-scrollbar-track,
+#listaNotificacoes::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.menu::-webkit-scrollbar-thumb,
+#listaNotificacoes::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+/* PERFIL */
+
+.perfil {
+    width: 100%;
+    flex: 0 0 auto;
+
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.foto-perfil {
+    position: relative;
+    width: 85px;
+    height: 85px;
+
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.foto-perfil label {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+.foto-perfil img {
+    display: block;
+
+    width: 85px;
+    height: 85px;
+
+    object-fit: cover;
+
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+
+    box-shadow: 0 0 16px var(--brilho);
+}
+
+#inputFoto {
+    display: none;
+}
+
+/* ÍCONE DA CÂMERA */
+
+.icone-camera {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+
+    background: #b51b25;
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+/* DADOS DO PERFIL */
+
+.dados-perfil {
+    width: 100%;
+    color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.dados-perfil h3 {
+    margin: 4px 0 8px;
+
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.dados-perfil p {
+    margin: 4px 0;
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.dados-perfil span {
+    color: #ff3542;
+    font-weight: bold;
+}
+
+/* SEPARADOR */
+
+.separador {
+    width: 90%;
+    height: 1px;
+    flex: 0 0 1px;
+
+    margin: 8px auto 14px;
+
+    background: var(--vermelho);
+    opacity: 0.85;
+}
+
+/* ÍCONES DE NAVEGAÇÃO */
+
+.home,
+.icones {
+    width: 100%;
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.home a,
+.icones a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home img,
+.icones img {
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.home img:hover,
+.icones img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px #ffffff);
+}
+
+/* BOTÕES DO MENU */
+
+.menu > button,
+.botao-menu-lateral {
+    display: flex;
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 290px;
+    min-height: 42px;
+
+    margin: 0 0 8px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+
+    background: linear-gradient(110deg, #0b1a39, #09152f);
+    color: var(--texto);
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+.menu > button:hover,
+.botao-menu-lateral:hover {
+    background: linear-gradient(90deg, #8d0b1b, #570713);
+    color: #ffffff;
+
+    transform: translateX(2px);
+    box-shadow: 0 0 13px var(--brilho);
+}
+
+.menu > button:active,
+.botao-menu-lateral:active {
+    transform: scale(0.98);
+}
+
+.menu > button.ativo,
+.botao-menu-lateral.ativo {
+    background: linear-gradient(100deg, #b31b25, #680d19);
+    border-color: var(--vermelho);
+    color: #ffffff;
+
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+/* BOTÃO MONITORES */
+
+.menu button.monitor {
+    width: 114px;
+    min-height: 31px;
+
+    padding: 5px 12px;
+    margin-bottom: 20px;
+
+    background: #050d29;
+    color: var(--texto-secundario);
+
+    font-size: 15px;
+    text-align: center;
+
+    cursor: default;
+}
+
+/* =====================================================
+   6. CABEÇALHO DA PÁGINA
+===================================================== */
+
+.cabecalho-pagina {
+    margin-bottom: 30px;
+}
+
+.cabecalho-pagina h1 {
+    margin-bottom: 12px;
+
+    color: #f4f7ff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.cabecalho-pagina p {
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   7. CARDS DE RESUMO
+===================================================== */
+
+.resumo {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card-resumo {
+    min-width: 0;
+    min-height: 115px;
+
+    padding: 22px;
+
+    border: 1px solid rgba(255, 16, 38, 0.82);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    box-shadow: var(--sombra);
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.card-resumo:hover {
+    transform: translateY(-3px);
+    background: #194181;
+    border-color: #ff3043;
+
+    box-shadow:
+        0 0 18px rgba(255, 0, 30, 0.18),
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.icone-resumo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(20, 57, 110, 0.95),
+        rgba(5, 20, 51, 0.98)
+    );
+
+    border: 1px solid rgba(67, 133, 220, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+}
+
+.card-resumo > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.card-resumo span {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.card-resumo strong {
+    color: var(--branco);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* =====================================================
+   8. MINHAS DISCIPLINAS
+===================================================== */
+
+.minhas-disciplinas {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.titulo-disciplinas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.titulo-disciplinas h2 {
+    color: #f4f7ff;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.titulo-disciplinas p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#quantidadeDisciplinas {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 34px;
+    padding: 8px 14px;
+
+    background: rgba(4, 20, 53, 0.95);
+    border: 1px solid var(--vermelho);
+    border-radius: 20px;
+
+    color: #dceaff;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.lista-disciplinas {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+/* =====================================================
+   9. CARDS DE DISCIPLINA
+===================================================== */
+
+.card-disciplina {
+    min-width: 0;
+    min-height: 120px;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    border: 1px solid rgba(255, 16, 38, 0.82);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    color: var(--texto);
+    text-align: left;
+    user-select: none;
+    overflow-wrap: anywhere;
+
+    box-shadow: var(--sombra);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-disciplina:hover {
+    background: var(--azul-card-hover);
+    transform: translateY(-3px);
+    border-color: #ff3043;
+
+    box-shadow:
+        0 0 18px rgba(255, 0, 30, 0.18),
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card-disciplina:focus-visible {
+    outline: 2px solid var(--branco);
+    outline-offset: 3px;
+}
+
+.card-disciplina.disciplina-selecionada {
+    background: var(--azul-card-hover);
+    border: 2px solid var(--vermelho);
+
+    box-shadow: 0 0 18px rgba(255, 0, 30, 0.22);
+}
+
+.icone-disciplina {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(20, 57, 110, 0.95),
+        rgba(5, 20, 51, 0.98)
+    );
+
+    border: 1px solid rgba(67, 133, 220, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+.info-disciplina {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-disciplina h3 {
+    color: var(--branco);
+    font-size: 17px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.info-disciplina p {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.info-disciplina .texto-clique {
+    color: #e3e8f4;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.nome-disciplina {
+    color: var(--branco);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.area-disciplina {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+/* =====================================================
+   10. CARREGAMENTO E LISTAS VAZIAS
+===================================================== */
+
+.carregando-disciplinas,
+.sem-disciplinas,
+.sem-monitorias {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    padding: 35px 22px;
+
+    border: 1px solid rgba(255, 16, 38, 0.82);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    box-shadow: var(--sombra);
+
+    text-align: center;
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+.sem-disciplinas h3,
+.sem-monitorias h3 {
+    color: var(--branco);
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.sem-disciplinas p,
+.sem-monitorias p {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.icone-vazio,
+.sem-monitorias .icone {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   11. MENSAGENS DA PÁGINA
+===================================================== */
+
+.mensagem {
+    width: 100%;
+    margin: 10px 0;
+
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.mensagem:empty,
+.mensagem[hidden] {
+    display: none;
+}
+
+.mensagem.erro,
+.mensagem-erro,
+#mensagem.mensagem-erro {
+    padding: 14px 16px;
+
+    background: rgba(144, 14, 1, 0.20);
+    border: 1px solid rgba(244, 182, 182, 0.35);
+    border-radius: 9px;
+
+    color: var(--vermelho-claro);
+}
+
+#mensagem {
+    margin: 12px 0;
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   12. SEÇÃO DE AGENDAMENTOS
+===================================================== */
+
+.lista-monitorias {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 30px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    align-items: start;
+    gap: 20px;
+
+    scroll-margin-top: 100px;
+}
+
+.titulo-agendamentos {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    margin: 0;
+
+    color: var(--branco);
+    font-size: 24px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.aviso-vazio {
+    grid-column: 1 / -1;
+
+    margin: 0;
+    padding: 8px 0;
+
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.cabecalho-agendamentos {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 0;
+    color: var(--branco);
+}
+
+.cabecalho-agendamentos h2 {
+    color: #f4f7ff;
+    font-size: 24px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.cabecalho-agendamentos p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   13. CARDS DE AGENDAMENTO
+===================================================== */
+
+.card-monitoria,
+.card-agendamento {
+    width: 100%;
+    min-width: 0;
+
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    color: var(--texto);
+
+    border: 1px solid rgba(255, 16, 38, 0.82);
+    border-radius: 14px;
+
+    box-shadow: var(--sombra);
+
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-monitoria:hover,
+.card-agendamento:hover {
+    background: #194181;
+    transform: translateY(-2px);
+    border-color: #ff3043;
+
+    box-shadow:
+        0 0 18px rgba(255, 0, 30, 0.18),
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.topo-card,
+.topo-card-agendamento {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.topo-card .disciplina,
+.topo-card-agendamento h3 {
+    color: var(--branco);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.nome-aluno {
+    margin: 0 0 16px;
+
+    color: var(--branco);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   14. ETIQUETAS DE STATUS
+===================================================== */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 100%;
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+}
+
+.status-agendado {
+    background: var(--amarelo);
+    color: #302500;
+}
+
+.status-realizado {
+    background: var(--verde);
+    color: #123b20;
+}
+
+.status-cancelado {
+    background: var(--vermelho-claro);
+    color: #651616;
+}
+
+.status-padrao {
+    display: inline-flex;
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #d8dce8;
+    color: #222b40;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-agendamento {
+    font-weight: 700;
+}
+
+.status-agendamento[data-status="agendado"] {
+    color: var(--amarelo);
+}
+
+.status-agendamento[data-status="realizado"] {
+    color: var(--verde);
+}
+
+.status-agendamento[data-status="cancelado"] {
+    color: var(--vermelho-claro);
+}
+
+/* =====================================================
+   15. INFORMAÇÕES DO AGENDAMENTO
+===================================================== */
+
+.informacoes {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.informacao {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.informacao .icone {
+    width: 22px;
+    flex-shrink: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.informacao strong {
+    color: var(--branco);
+    font-weight: 700;
+}
+
+.campo-agendamento {
+    margin: 0 0 12px;
+
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.campo-agendamento strong {
+    color: var(--branco);
+}
+
+/* =====================================================
+   16. ASSUNTO E OBSERVAÇÃO
+===================================================== */
+
+.assunto {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--borda);
+}
+
+.assunto-titulo {
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.assunto-texto {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.observacao {
+    margin-top: 15px;
+    padding: 13px;
+
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+.observacao strong {
+    color: var(--branco);
+}
+
+/* =====================================================
+   17. BOTÃO MARCAR COMO REALIZADO
+===================================================== */
+
+.btn-realizado {
+    width: 100%;
+    min-height: 46px;
+
+    margin-top: 20px;
+    padding: 12px 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 1px solid #ff3043;
+    border-radius: 10px;
+
+    background: linear-gradient(90deg, #a70c1b, #650814);
+    color: var(--branco);
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+
+    box-shadow: 0 0 12px rgba(255, 0, 30, 0.16);
+
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.btn-realizado:hover {
+    background: linear-gradient(90deg, #c41125, #7a0b19);
+    transform: translateY(-2px);
+    box-shadow: 0 0 17px rgba(255, 0, 30, 0.28);
+}
+
+.btn-realizado:active {
+    transform: scale(0.98);
+}
+
+.btn-realizado:focus-visible {
+    outline: 3px solid var(--verde);
+    outline-offset: 3px;
+}
+
+.btn-realizado:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ETIQUETA DE MONITORIA REALIZADA */
+
+.etiqueta-realizado {
+    width: 100%;
+    min-height: 42px;
+
+    margin-top: 20px;
+    padding: 11px 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 1px solid rgba(182, 230, 194, 0.35);
+    border-radius: 10px;
+
+    background: rgba(25, 135, 84, 0.15);
+    color: var(--verde);
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* =====================================================
+   18. ROLAGEM
+===================================================== */
+
+#listaDisciplinas,
+#listaMonitorias {
+    scroll-margin-top: 100px;
+}
+
+/* =====================================================
+   19. NOTIFICAÇÕES — SINO E CONTADOR
+===================================================== */
+
+.area-notificacoes {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    z-index: 3000;
+}
+
+.botao-notificacoes {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 12px;
+
+    background: linear-gradient(145deg, #45101c, #170d22);
+    color: var(--branco);
+
+    font-size: 23px;
+    line-height: 1;
+
+    box-shadow: 0 0 12px rgba(255, 16, 38, 0.12);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.botao-notificacoes:hover {
+    background: linear-gradient(145deg, #8d0b1b, #570713);
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px rgba(255, 16, 38, 0.3);
+}
+
+.contador-notificacoes {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #030b24;
+    border-radius: 50px;
+
+    background: #ff1026;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.contador-notificacoes[hidden],
+.painel-notificacoes[hidden] {
+    display: none !important;
+}
+
+/* =====================================================
+   20. PAINEL DE NOTIFICAÇÕES
+===================================================== */
+
+.painel-notificacoes {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+
+    width: 370px;
+    max-width: calc(100vw - 24px);
+
+    max-height: min(520px, 75vh);
+    max-height: min(520px, 75dvh);
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 16, 38, 0.85);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        160deg,
+        #081631 0%,
+        #030b24 100%
+    );
+
+    color: var(--texto);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.5),
+        0 0 18px rgba(255, 16, 38, 0.12);
+
+    animation: abrirPainelNotificacoes 0.2s ease;
+}
+
+@keyframes abrirPainelNotificacoes {
+    from {
+        opacity: 0;
+        transform: translateY(-7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CABEÇALHO DO PAINEL */
+
+.cabecalho-notificacoes {
+    min-height: 60px;
+    padding: 15px 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    border-bottom: 1px solid rgba(255, 16, 38, 0.55);
+
+    background: rgba(8, 22, 49, 0.98);
+}
+
+.cabecalho-notificacoes h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#fecharNotificacoes {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 16, 38, 0.65);
+    border-radius: 8px;
+
+    background: #170d22;
+    color: #ffffff;
+
+    font-size: 23px;
+    line-height: 1;
+}
+
+#fecharNotificacoes:hover {
+    background: #8d0b1b;
+}
+
+/* ATIVAR AVISOS DO NAVEGADOR */
+
+.ativar-notificacoes {
+    width: calc(100% - 24px);
+    min-height: 42px;
+
+    margin: 12px;
+    padding: 10px 12px;
+
+    border: 1px solid rgba(255, 48, 67, 0.9);
+    border-radius: 9px;
+
+    background: linear-gradient(100deg, #8d0b1b, #570713);
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.ativar-notificacoes:hover {
+    background: linear-gradient(100deg, #bd1528, #790b1b);
+    transform: translateY(-1px);
+}
+
+.ativar-notificacoes:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* =====================================================
+   21. LISTA DE NOTIFICAÇÕES
+===================================================== */
+
+#listaNotificacoes {
+    min-height: 60px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: 0 12px 12px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #9b1a28 #071329;
+}
+
+.item-notificacao {
+    width: 100%;
+
+    margin-top: 10px;
+    padding: 13px;
+
+    border: 1px solid rgba(255, 16, 38, 0.35);
+    border-radius: 10px;
+
+    background: rgba(5, 22, 55, 0.95);
+    color: var(--texto);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.item-notificacao:hover {
+    background: #102b54;
+    border-color: rgba(255, 16, 38, 0.8);
+}
+
+.item-notificacao.nao-lida {
+    border-left: 4px solid #ff1026;
+    background: rgba(70, 10, 25, 0.32);
+}
+
+.item-notificacao.lida {
+    opacity: 0.78;
+}
+
+.item-notificacao h4 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.item-notificacao p {
+    margin: 5px 0;
+
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.item-notificacao small {
+    display: block;
+    margin-top: 9px;
+
+    color: var(--texto-secundario);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.item-notificacao button {
+    min-height: 34px;
+
+    margin-top: 10px;
+    padding: 7px 11px;
+
+    border: 1px solid rgba(255, 16, 38, 0.75);
+    border-radius: 7px;
+
+    background: #071631;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.item-notificacao button:hover {
+    background: #8d0b1b;
+}
+
+#listaNotificacoes > p {
+    margin: 0;
+    padding: 20px 10px;
+
+    color: #c5d0e6;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* =====================================================
+   22. TABLETS
+===================================================== */
+
+@media (max-width: 1100px) {
+    .conteudo {
+        padding: 28px;
+    }
+
+    .resumo {
+        gap: 14px;
+    }
+
+    .card-resumo {
+        padding: 18px;
+        gap: 12px;
+    }
+
+    .card-resumo strong {
+        font-size: 26px;
+    }
+
+    .lista-disciplinas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lista-monitorias {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .menu {
+        width: 300px;
+        max-width: 88vw;
+    }
+}
+
+/* =====================================================
+   23. CELULARES
+===================================================== */
+
+@media (max-width: 700px) {
+    .topo {
+        height: 70px;
+        padding: 0 12px;
+        gap: 8px;
+
+        background: linear-gradient(
+            105deg,
+            #030b24 0%,
+            #061638 55%,
+            #030b24 100%
+        );
+    }
+
+    .botao-menu {
+        top: 13px;
+        left: 12px;
+
+        width: 45px;
+        height: 45px;
+
+        font-size: 27px;
+    }
+
+    .logo-sacm {
+        width: 95px;
+        margin-left: 55px;
+    }
+
+    .logo-sacm img {
+        width: 95px;
+        max-height: 48px;
+    }
+
+    .logo-ceep,
+    .logo-ceep img {
+        width: 75px;
+    }
+
+    .logo-ceep img {
+        height: 43px;
+    }
+
+    .titulo {
+        flex: 0 1 240px;
+        width: 40%;
+        max-width: 240px;
+        min-width: 0;
+        min-height: 25px;
+        padding: 0 8px;
+    }
+
+    .titulo h2 {
+        font-size: 15px;
+    }
+
+    .container {
+        padding-top: 0;
+        min-height: calc(100vh - 70px);
+    }
+
+    .fundo-menu {
+        inset: 70px 0 0;
+    }
+
+    .menu {
+        top: 70px;
+
+        width: min(300px, 88vw);
+        max-width: 88vw;
+
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+
+        padding: 16px 12px 22px;
+    }
+
+    .menu > button,
+    .botao-menu-lateral {
+        width: 100%;
+        max-width: 100%;
+        min-height: 44px;
+
+        margin-bottom: 8px;
+        padding: 10px 12px;
+
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .conteudo {
+        padding: 23px 16px;
+    }
+
+    .cabecalho-pagina {
+        margin-bottom: 24px;
+    }
+
+    .cabecalho-pagina h1 {
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    .cabecalho-pagina p {
+        font-size: 14px;
+    }
+
+    .resumo {
+        grid-template-columns: 1fr;
+        gap: 13px;
+        margin-bottom: 32px;
+    }
+
+    .card-resumo {
+        min-height: 95px;
+        padding: 17px;
+    }
+
+    .icone-resumo {
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+    }
+
+    .card-resumo strong {
+        font-size: 25px;
+    }
+
+    .titulo-disciplinas {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .titulo-disciplinas h2 {
+        font-size: 21px;
+    }
+
+    .lista-disciplinas {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .card-disciplina {
+        min-height: 100px;
+        padding: 17px;
+    }
+
+    .lista-monitorias {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 24px;
+        scroll-margin-top: 85px;
+    }
+
+    .titulo-agendamentos,
+    .cabecalho-agendamentos h2 {
+        font-size: 21px;
+    }
+
+    .card-monitoria,
+    .card-agendamento {
+        padding: 18px;
+    }
+
+    .topo-card .disciplina,
+    .topo-card-agendamento h3 {
+        font-size: 16px;
+    }
+
+    .informacao,
+    .campo-agendamento {
+        font-size: 13px;
+    }
+
+    .nome-aluno {
+        font-size: 16px;
+    }
+
+    .btn-realizado {
+        min-height: 46px;
+        margin-top: 16px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .etiqueta-realizado {
+        margin-top: 16px;
+        font-size: 13px;
+    }
+
+    .home {
+        gap: 35px;
+    }
+
+    /* SINO NO CELULAR */
+
+    .area-notificacoes {
+        margin-left: auto;
+    }
+
+    .botao-notificacoes {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+        font-size: 20px;
+    }
+
+    /* PAINEL NO CELULAR */
+
+    .painel-notificacoes {
+        position: fixed;
+        top: 78px;
+        right: 12px;
+
+        width: 370px;
+        max-width: calc(100vw - 24px);
+
+        max-height: calc(100vh - 100px);
+        max-height: calc(100dvh - 100px);
+    }
+
+    .cabecalho-notificacoes {
+        min-height: 54px;
+        padding: 12px;
+    }
+
+    .cabecalho-notificacoes h3 {
+        font-size: 16px;
+    }
+
+    .ativar-notificacoes {
+        width: calc(100% - 20px);
+        margin: 10px;
+    }
+
+    #listaNotificacoes {
+        padding: 0 10px 10px;
+    }
+}
+
+/* =====================================================
+   24. CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media (max-width: 380px) {
+    .topo {
+        padding: 0 8px;
+        gap: 5px;
+    }
+
+    .logo-sacm {
+        width: 58px;
+    }
+
+    .logo-sacm img {
+        width: 58px;
+    }
+
+    .logo-ceep,
+    .logo-ceep img {
+        width: 35px;
+    }
+
+    .logo-ceep img {
+        height: 35px;
+    }
+
+    .titulo {
+        flex: 0 1 170px;
+        width: 40%;
+        max-width: 170px;
+        min-width: 0;
+        min-height: 24px;
+    }
+
+    .titulo h2 {
+        font-size: 14px;
+    }
+
+    .conteudo {
+        padding: 20px 12px;
+    }
+
+    .cabecalho-pagina h1 {
+        font-size: 22px;
+    }
+
+    .card-resumo {
+        padding: 14px;
+    }
+
+    .card-disciplina {
+        padding: 14px;
+        gap: 11px;
+    }
+
+    .icone-disciplina {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .info-disciplina h3 {
+        font-size: 15px;
+    }
+
+    .card-monitoria,
+    .card-agendamento {
+        padding: 15px;
+    }
+
+    .menu {
+        width: min(280px, 88vw);
+        max-width: 88vw;
+        padding: 14px 10px 20px;
+    }
+
+    .menu > button,
+    .botao-menu-lateral {
+        width: 100%;
+        max-width: 100%;
+        min-height: 42px;
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    .perfil {
+        padding: 14px 6px;
+    }
+
+    .home {
+        gap: 25px;
+    }
+
+    .home img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .botao-notificacoes {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .painel-notificacoes {
+        top: 76px;
+        right: 8px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .item-notificacao {
+        padding: 11px;
+    }
+}
+
+/* =====================================================
+   25. ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* ==========================================================
+   SACM — SINO E PAINEL DE NOTIFICAÇÕES
+========================================================== */
+
+/* Respeita o atributo hidden */
+#painelNotificacoes[hidden],
+#contadorNotificacoes[hidden] {
+    display: none !important;
+}
+
+/* Área do sino no cabeçalho */
+.area-notificacoes {
+    position: absolute;
+    top: 50%;
+    right: 158px;
+    transform: translateY(-50%);
+    z-index: 1100;
+}
+
+/* Botão do sino */
+.botao-notificacoes {
+    position: relative;
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background: #101b46;
+
+    border: 1px solid rgba(255, 16, 38, 0.7);
+    border-radius: 10px;
+
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.botao-notificacoes:hover {
+    background: #ff1026;
+    border-color: #ff1026;
+}
+
+.botao-notificacoes:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* Contador de notificações não lidas */
+.contador-notificacoes {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background: #ff1026;
+
+    border: 2px solid #080d2d;
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* Painel suspenso */
+.painel-notificacoes {
+    position: absolute;
+    top: 55px;
+    right: 0;
+
+    width: 350px;
+    max-width: calc(100vw - 24px);
+    max-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    color: #f1f5ff;
+    background: #08152e;
+
+    border: 1px solid rgba(255, 16, 38, 0.65);
+    border-radius: 12px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Cabeçalho do painel */
+.cabecalho-notificacoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    padding: 16px;
+
+    background: #101b46;
+    border-bottom: 1px solid rgba(255, 16, 38, 0.4);
+}
+
+.cabecalho-notificacoes h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 17px;
+}
+
+#fecharNotificacoes {
+    width: 32px;
+    height: 32px;
+
+    color: #ffffff;
+    background: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 7px;
+
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#fecharNotificacoes:hover {
+    background: #ff1026;
+}
+
+/* Ativar avisos do navegador */
+.ativar-notificacoes {
+    margin: 12px;
+    padding: 11px;
+
+    color: #ffffff;
+    background: #163976;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ativar-notificacoes:hover {
+    background: #2456a5;
+}
+
+/* Lista */
+#listaNotificacoes {
+    overflow-y: auto;
+    padding: 10px;
+
+    min-height: 50px;
+}
+
+.estado-notificacoes {
+    padding: 20px 10px;
+    color: #aab8d3;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Cada notificação */
+.item-notificacao {
+    margin-bottom: 9px;
+    padding: 13px;
+
+    background: #0d2045;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+
+.item-notificacao:hover {
+    border-color: rgba(255, 16, 38, 0.6);
+    background: #132b55;
+}
+
+.item-notificacao.nao-lida {
+    border-left: 3px solid #ff1026;
+    background: rgba(255, 16, 38, 0.08);
+}
+
+.item-notificacao strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.item-notificacao p {
+    margin: 0 0 8px;
+    color: #d5def0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.item-notificacao small {
+    color: #aab8d3;
+    font-size: 11px;
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .area-notificacoes {
+        right: 12px;
+    }
+
+    .botao-notificacoes {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+    }
+
+    .painel-notificacoes {
+        position: fixed;
+        top: 76px;
+        right: 12px;
+
+        width: 350px;
+        max-width: calc(100vw - 24px);
+        max-height: calc(100vh - 95px);
+    }
+}

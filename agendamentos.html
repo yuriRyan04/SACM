@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Agendar Monitoria</title>
+    <link rel="stylesheet" href="styles 6.css">
+</head>
+<body>
+
+
+<header class="topo">
+    <button class="botao-menu" onclick="abrirMenu()"
+            aria-label="Abrir menu">☰</button>
+
+
+    <div class="logo-sacm">
+        <img src="./img/SACM.png" alt="Logo SACM">
+    </div>
+
+
+    <div class="titulo">
+        <h2>AGENDAR MONITORIA</h2>
+    </div>
+
+
+    <div class="logo-ceep">
+        <img src="./img/CEEP.png" alt="Logo CEEP">
+    </div>
+</header>
+
+
+<div class="fundo-menu" id="fundoMenu" onclick="fecharMenu()"></div>
+
+
+<div class="container">
+    <aside class="menu" id="menu">
+        <div class="perfil">
+            <div class="foto-perfil">
+                <label for="inputFoto">
+                    <img id="fotoUsuario" src="./img/aluno.png"
+                         alt="Foto de perfil">
+                    <span class="icone-camera">📷</span>
+                </label>
+
+
+                <input type="file" id="inputFoto"
+                       accept="image/jpeg,image/png,image/webp">
+            </div>
+
+
+            <div class="dados-perfil">
+                <h3 id="nomeUsuario">Carregando...</h3>
+
+
+                <p>Turma:
+                    <span id="turmaUsuario">...</span>
+                </p>
+
+
+                <p>Matrícula:
+                    <span id="matriculaUsuario">...</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="separador"></div>
+
+
+        <div class="home">
+            <a href="index.html">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+
+            <a href="#" onclick="history.back(); return false;">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='monitorias.html'">
+            MINHAS MONITORIAS
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='meus-agendamentos.html'">
+            MEUS AGENDAMENTOS
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Linguagens.html'">
+            LINGUAGENS
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Natureza.html'">
+            NATUREZA
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Humanas.html'">
+            HUMANAS
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Matematica.html'">
+            MATEMÁTICA
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Info.html'">
+            INFO
+        </button>
+
+
+        <button class="botao-menu-lateral"
+                onclick="location.href='Redes.html'">
+            REDES DE COMPUTADORES
+        </button>
+
+        <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+    </aside>
+
+
+    <main class="conteudo">
+        <section class="cabecalho-pagina">
+            <h1>AGENDAR MONITORIA</h1>
+            <p>Preencha os dados abaixo para agendar sua monitoria.</p>
+        </section>
+
+
+        <section class="monitor-selecionado">
+            <img id="fotoMonitorSelecionado"
+                 src="./img/aluno.png"
+                 alt="Foto do monitor"
+                 class="foto-monitor">
+
+
+            <div class="dados-monitor">
+                <span class="legenda-monitor">MONITOR SELECIONADO</span>
+                <h3 id="nomeMonitorSelecionado">Monitor selecionado</h3>
+                <p id="disciplinaMonitorSelecionado">Disciplina</p>
+            </div>
+        </section>
+
+
+        <form class="formulario" id="formAgendamento">
+            <div class="campo">
+                <label for="data">Data da monitoria</label>
+                <input type="date" id="data" required>
+            </div>
+
+
+            <div class="campo">
+                <label for="horario">Horário</label>
+
+
+                <select id="horario" required disabled>
+                    <option value="">Selecione primeiro a data</option>
+                </select>
+
+
+                <small id="ajudaHorario">
+                    Selecione uma data para consultar os horários disponíveis.
+                </small>
+            </div>
+
+
+            <div class="campo">
+                <label for="assunto">Assunto da monitoria</label>
+
+
+                <input type="text"
+                       id="assunto"
+                       maxlength="150"
+                       placeholder="Ex.: Equações do 2º grau"
+                       required>
+            </div>
+
+
+            <div class="campo">
+                <label for="observacao">Observação</label>
+
+
+                <textarea id="observacao"
+                          rows="5"
+                          maxlength="500"
+                          placeholder="Informe alguma dúvida ou observação para o monitor..."></textarea>
+            </div>
+
+
+            <div id="mensagem" class="mensagem" role="status"
+                 aria-live="polite"></div>
+
+
+            <button type="submit"
+                    id="botaoAgendar"
+                    class="botao-agendar">
+                AGENDAR MONITORIA
+            </button>
+        </form>
+    </main>
+</div>
+
+
+<script src="./js/agendamentos.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/perfil.js"></script>
+
+
+</body>
+</html>

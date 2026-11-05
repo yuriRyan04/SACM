@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SACM - Minhas Monitorias</title>
+
+    <link rel="stylesheet" href="styles 5.css">
+</head>
+
+<body>
+
+<header class="topo">
+
+    <button
+        class="botao-menu"
+        onclick="abrirMenu()"
+        aria-label="Abrir menu"
+    >☰</button>
+
+    <div class="logo-sacm">
+        <img src="./img/SACM.png" alt="Logo SACM">
+    </div>
+
+    <div class="titulo">
+        <h2>MONITORIAS</h2>
+    </div>
+
+    <div class="logo-ceep">
+        <img src="./img/CEEP.png" alt="Logo CEEP">
+    </div>
+    
+<div class="area-notificacoes">
+    <button
+        type="button"
+        id="botaoNotificacoes"
+        class="botao-notificacoes"
+        aria-label="Abrir notificações"
+        aria-expanded="false"
+        aria-controls="painelNotificacoes"
+    >
+        <span aria-hidden="true">🔔</span>
+        <span
+            id="contadorNotificacoes"
+            class="contador-notificacoes"
+            hidden
+        >0</span>
+    </button>
+
+    <div
+        id="painelNotificacoes"
+        class="painel-notificacoes"
+        hidden
+    >
+        <div class="cabecalho-notificacoes">
+            <h3>Notificações</h3>
+            <button
+                type="button"
+                id="fecharNotificacoes"
+                aria-label="Fechar notificações"
+            >×</button>
+        </div>
+
+        <button
+            type="button"
+            id="ativarNotificacoesNavegador"
+            class="ativar-notificacoes"
+        >
+            Ativar avisos do navegador
+        </button>
+
+        <div id="listaNotificacoes" aria-live="polite">
+            <p>Carregando notificações...</p>
+        </div>
+    </div>
+</div>
+
+
+</header>
+
+<div class="fundo-menu" id="fundoMenu" onclick="fecharMenu()"></div>
+
+<div class="container">
+
+    <aside class="menu" id="menu">
+
+        <div class="perfil">
+
+            <div class="foto-perfil">
+                <label for="inputFoto">
+                    <img
+                        id="fotoUsuario"
+                        src="./img/aluno.png"
+                        alt="Foto de perfil"
+                    >
+                    <span class="icone-camera">📷</span>
+                </label>
+
+                <input
+                    type="file"
+                    id="inputFoto"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+            </div>
+
+            <div class="dados-perfil">
+                <h3 id="nomeUsuario">Carregando...</h3>
+
+                <p>
+                    Turma:
+                    <span id="turmaUsuario">...</span>
+                </p>
+
+                <p>
+                    Matrícula:
+                    <span id="matriculaUsuario">...</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="separador"></div>
+
+        <div class="home">
+            <a href="index.html">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+            <a href="#" onclick="history.back(); return false;">
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+        </div>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='monitorias.html'"
+        >MINHAS MONITORIAS</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='meus-agendamentos.html'"
+        >
+            MEUS AGENDAMENTOS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Linguagens.html'"
+        >LINGUAGENS</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Natureza.html'"
+        >NATUREZA</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Humanas.html'"
+        >HUMANAS</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Matematica.html'"
+        >MATEMÁTICA</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Info.html'"
+        >INFORMÁTICA</button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Redes.html'"
+        >REDES DE COMPUTADORES</button>
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+    </aside>
+
+    <main class="conteudo">
+
+        <section class="cabecalho-pagina">
+            <h1>MINHAS MONITORIAS</h1>
+
+            <p>
+                Confira as disciplinas em que você é monitor
+                e seus agendamentos.
+            </p>
+        </section>
+
+        <section class="resumo">
+
+            <div class="card-resumo">
+                <div class="icone-resumo">📚</div>
+
+                <div>
+                    <span>Total de agendamentos</span>
+                    <strong id="totalAgendamentos">0</strong>
+                </div>
+            </div>
+
+            <div class="card-resumo">
+                <div class="icone-resumo">📅</div>
+
+                <div>
+                    <span>Agendados</span>
+                    <strong id="totalAgendados">0</strong>
+                </div>
+            </div>
+
+            <div class="card-resumo">
+                <div class="icone-resumo">✓</div>
+
+                <div>
+                    <span>Realizados</span>
+                    <strong id="totalRealizados">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="minhas-disciplinas">
+
+            <div class="titulo-disciplinas">
+
+                <div>
+                    <h2>Minhas Disciplinas</h2>
+
+                    <p>
+                        Disciplinas em que você atua como monitor.
+                    </p>
+                </div>
+
+                <span id="quantidadeDisciplinas">
+                    0 disciplinas
+                </span>
+
+            </div>
+
+            <div id="listaDisciplinas" class="lista-disciplinas">
+                <div class="carregando-disciplinas">
+                    Carregando suas disciplinas...
+                </div>
+            </div>
+
+        </section>
+
+        <div id="mensagem" class="mensagem" role="status"></div>
+
+        <section
+            id="listaMonitorias"
+            class="lista-monitorias"
+        ></section>
+
+    </main>
+
+</div>
+
+<script src="./js/notificacoes.js" defer></script>
+<script src="./js/minhas-monitorias.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/perfil.js"></script>
+
+</body>
+</html>

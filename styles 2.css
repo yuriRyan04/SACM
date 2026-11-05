@@ -1,0 +1,1476 @@
+
+/* ==================================================
+   SACM — GERENCIAR DISCIPLINAS
+   CSS COMPLETO ATUALIZADO
+   AZUL-MARINHO + VERMELHO NEON
+   MENU + PERFIL + FORMULÁRIO + LIMITE + TABELA
+================================================== */
+
+/* 1. RESET E VARIÁVEIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo: #050d29;
+    --fundo-secundario: #081735;
+    --fundo-menu: #07132e;
+    --fundo-input: #080f28;
+
+    --vermelho: #ff202f;
+    --vermelho-escuro: #a51b0b;
+    --vermelho-hover: #c51c29;
+    --vermelho-suave: #54101c;
+
+    --texto: #e8edff;
+    --texto-secundario: #c5d0ed;
+
+    --borda: rgba(255, 32, 47, 0.7);
+    --brilho: rgba(255, 32, 47, 0.2);
+}
+
+/* 2. CONFIGURAÇÕES GERAIS */
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background: #030b24;
+    color: #f4f7ff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 3. CABEÇALHO */
+
+.topo {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 25px;
+
+    position: relative;
+    z-index: 1000;
+
+    background: linear-gradient(
+        110deg,
+        #07142e 0%,
+        #091a3a 50%,
+        #06132c 100%
+    );
+
+    border-bottom: 1px solid var(--vermelho);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* BOTÃO DO MENU */
+
+.botao-menu {
+    position: fixed;
+
+    top: 17px;
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 10px;
+
+    background: linear-gradient(145deg, #45101c, #170d22);
+
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 3000;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.botao-menu:hover {
+    background: var(--vermelho-escuro);
+    box-shadow: 0 0 15px rgba(255, 32, 47, 0.4);
+    transform: scale(1.04);
+}
+
+/* LOGO SACM */
+
+.logo-sacm {
+    margin-left: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-sacm img {
+    display: block;
+
+    width: 125px;
+    max-height: 68px;
+
+    object-fit: contain;
+}
+
+/* TÍTULO */
+
+.titulo {
+    min-width: 178px;
+    min-height: 45px;
+
+    padding: 0 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50px;
+    border: 1px solid var(--vermelho);
+
+    background: linear-gradient(135deg, #3a0d1b, #75111b);
+
+    box-shadow: 0 0 14px rgba(255, 20, 35, 0.2);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.titulo:hover {
+    background: linear-gradient(135deg, #64101d, #a51b25);
+    box-shadow: 0 0 18px rgba(255, 32, 47, 0.3);
+}
+
+.titulo h2 {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* LOGO CEEP */
+
+.logo-ceep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-ceep img {
+    display: block;
+
+    width: 100px;
+    max-height: 65px;
+
+    object-fit: contain;
+}
+
+/* 4. CONTAINER PRINCIPAL */
+
+.container {
+    display: flex;
+
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    min-height: calc(100dvh - 80px);
+}
+
+/* 5. MENU LATERAL */
+
+.menu {
+    position: fixed;
+
+    top: 80px;
+    left: 0;
+
+    width: 350px;
+    max-width: 90vw;
+
+    height: calc(100vh - 80px);
+    height: calc(100dvh - 80px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px 15px 25px;
+
+    background: linear-gradient(
+        180deg,
+        #081631 0%,
+        #06112a 100%
+    );
+
+    border: 1px solid var(--vermelho);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+
+    box-shadow: 8px 0 25px rgba(0, 0, 0, 0.35);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    z-index: 2500;
+
+    transform: translateX(-101%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    scrollbar-color: #9b1a28 #071329;
+    scrollbar-width: thin;
+}
+
+.menu.menu-aberto {
+    transform: translateX(0);
+
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+/* 6. PERFIL */
+
+.perfil {
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.foto-perfil {
+    position: relative;
+
+    width: 85px;
+    height: 85px;
+
+    margin-bottom: 10px;
+
+    flex-shrink: 0;
+}
+
+.foto-perfil label {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+.foto-perfil img {
+    display: block;
+
+    width: 85px;
+    height: 85px;
+
+    object-fit: cover;
+
+    border: 2px solid var(--vermelho);
+    border-radius: 50%;
+
+    box-shadow: 0 0 16px var(--brilho);
+}
+
+#inputFoto {
+    display: none;
+}
+
+.icone-camera {
+    position: absolute;
+
+    right: -2px;
+    bottom: -2px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background: #b51b25;
+    color: white;
+
+    font-size: 13px;
+}
+
+.dados-perfil {
+    width: 100%;
+
+    color: white;
+
+    overflow-wrap: anywhere;
+}
+
+.dados-perfil h3 {
+    margin: 4px 0 8px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.dados-perfil p {
+    margin: 4px 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.dados-perfil span {
+    color: #ff3542;
+    font-weight: bold;
+}
+
+/* 7. SEPARADOR */
+
+.separador {
+    width: 90%;
+    height: 1px;
+
+    flex: 0 0 1px;
+
+    margin: 8px auto 14px;
+
+    background: var(--vermelho);
+    opacity: 0.85;
+}
+
+/* 8. ÍCONES DE INÍCIO E VOLTAR */
+
+.home {
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 35px;
+
+    margin-bottom: 20px;
+}
+
+.home a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home img {
+    display: block;
+
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.home img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+.icones {
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.icones a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icones img {
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.icones img:hover {
+    transform: scale(1.15);
+}
+
+/* 9. BOTÕES DO MENU */
+
+.menu > button {
+    display: flex;
+
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 290px;
+
+    min-height: 42px;
+
+    margin: 0 0 8px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 28px;
+
+    background: linear-gradient(110deg, #0b1a39, #09152f);
+
+    color: var(--texto);
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    text-align: center;
+
+    overflow-wrap: anywhere;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+.menu > button:hover {
+    background: linear-gradient(90deg, #8d0b1b, #570713);
+
+    color: white;
+
+    transform: translateX(2px);
+
+    box-shadow: 0 0 13px var(--brilho);
+}
+
+.menu > button:active {
+    transform: scale(0.98);
+}
+
+.menu > button.ativo {
+    background: linear-gradient(100deg, #b31b25, #680d19);
+
+    border-color: var(--vermelho);
+
+    color: white;
+
+    box-shadow: 0 0 12px var(--brilho);
+}
+
+/* 10. CONTEÚDO PRINCIPAL */
+
+.conteudo {
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: calc(100vh - 80px);
+    min-height: calc(100dvh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: radial-gradient(
+        ellipse at top left,
+        rgba(13, 37, 83, 0.20),
+        transparent 58%
+    );
+}
+
+/* 11. ÁREA DE GERENCIAMENTO */
+
+.gerenciamento {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 30px auto;
+
+    color: white;
+}
+
+.cabecalho-tabela {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.cabecalho-tabela h2 {
+    margin: 0;
+
+    color: #f4f7ff;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* 12. SELEÇÃO DE ÁREA */
+
+.formulario-gerenciamento {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    border: 1px solid rgba(255, 16, 38, 0.72);
+    border-radius: 12px;
+}
+
+.formulario-gerenciamento label {
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.formulario-gerenciamento select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid rgba(255, 16, 38, 0.55);
+    border-radius: 8px;
+
+    background: #071632;
+
+    color: #f4f7ff;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+.formulario-gerenciamento select:focus {
+    border-color: #ff1026;
+    box-shadow: 0 0 8px rgba(255, 0, 30, 0.18);
+}
+
+.formulario-gerenciamento select option {
+    background: #071632;
+    color: white;
+}
+
+/* 13. FORMULÁRIO DE DISCIPLINAS */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    );
+
+    border: 1px solid rgba(255, 16, 38, 0.72);
+    border-radius: 10px;
+}
+
+.formulario > label {
+    color: var(--texto);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* CAMPOS DE TEXTO E NÚMERO */
+
+.formulario > input[type="text"],
+.formulario > input[type="number"] {
+    width: 100%;
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(255, 16, 38, 0.55);
+    border-radius: 8px;
+
+    background: var(--fundo-input);
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.formulario > input[type="text"]::placeholder {
+    color: #9aafd6;
+}
+
+.formulario > input[type="text"]:focus,
+.formulario > input[type="number"]:focus {
+    border-color: var(--vermelho);
+
+    box-shadow: 0 0 8px rgba(255, 0, 30, 0.18);
+}
+
+/* CAMPO DO LIMITE */
+
+#limiteMonitores {
+    max-width: 220px;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    accent-color: var(--vermelho);
+}
+
+#limiteMonitores::-webkit-inner-spin-button,
+#limiteMonitores::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.formulario > small {
+    display: block;
+
+    margin-top: -8px;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* 14. GRUPOS DE SÉRIES E CURSOS */
+
+.grupo-opcoes {
+    min-width: 0;
+
+    padding: 16px;
+
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    background: rgba(5, 13, 41, 0.65);
+}
+
+.grupo-opcoes legend {
+    padding: 0 9px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.opcoes-checkbox {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 14px 24px;
+}
+
+.opcoes-checkbox label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--texto);
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+.opcoes-checkbox input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    accent-color: var(--vermelho);
+
+    cursor: pointer;
+}
+
+.opcoes-checkbox input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+
+/* 15. BOTÕES DO FORMULÁRIO */
+
+.acoes-formulario {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 4px;
+}
+
+.btn-salvar,
+.btn-adicionar {
+    padding: 12px 18px;
+
+    background: linear-gradient(90deg, #a70c1b, #650814);
+
+    color: white;
+
+    border: 1px solid #ff1026;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.btn-salvar:hover,
+.btn-adicionar:hover {
+    background: linear-gradient(90deg, #c41125, #7a0b19);
+
+    box-shadow: 0 0 12px rgba(255, 0, 30, 0.22);
+
+    transform: translateY(-1px);
+}
+
+.btn-salvar:active,
+.btn-adicionar:active {
+    transform: scale(0.98);
+}
+
+.btn-salvar:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.btn-cancelar {
+    padding: 11px 18px;
+
+    background: #263650;
+
+    color: #ffffff;
+
+    border: 1px solid #65748e;
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background: #394b69;
+    transform: translateY(-1px);
+}
+
+/* 16. TABELA DE DISCIPLINAS */
+
+.tabela-responsiva {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid rgba(255, 16, 38, 0.75);
+    border-radius: 10px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #9b1a28 #071329;
+}
+
+.tabela-responsiva::-webkit-scrollbar {
+    height: 7px;
+}
+
+.tabela-responsiva::-webkit-scrollbar-track {
+    background: #071329;
+}
+
+.tabela-responsiva::-webkit-scrollbar-thumb {
+    background: #9b1a28;
+    border-radius: 10px;
+}
+
+.tabela-gerenciar-disciplinas {
+    width: 100%;
+    min-width: 800px;
+
+    border-collapse: collapse;
+
+    background: #061632;
+
+    color: #dce6ff;
+}
+
+.tabela-gerenciar-disciplinas th,
+.tabela-gerenciar-disciplinas td {
+    padding: 14px;
+
+    border-bottom: 1px solid rgba(255, 16, 38, 0.28);
+
+    text-align: left;
+    vertical-align: middle;
+
+    overflow-wrap: anywhere;
+}
+
+.tabela-gerenciar-disciplinas th {
+    background: #0a2047;
+
+    color: #ffffff;
+
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.tabela-gerenciar-disciplinas td {
+    color: #dce6ff;
+}
+
+.tabela-gerenciar-disciplinas tbody tr:hover td {
+    background: #0b2148;
+}
+
+/* COLUNA DO LIMITE */
+
+.tabela-gerenciar-disciplinas th:nth-child(6),
+.tabela-gerenciar-disciplinas td:nth-child(6) {
+    min-width: 130px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* COLUNA DE AÇÕES */
+
+.tabela-gerenciar-disciplinas th:last-child,
+.tabela-gerenciar-disciplinas td:last-child {
+    min-width: 155px;
+    white-space: nowrap;
+}
+
+/* 17. BOTÕES DE EDITAR E EXCLUIR */
+
+.btn-editar,
+.btn-excluir {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 3px;
+    padding: 8px 12px;
+
+    border-radius: 6px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-editar {
+    background: #164c8c;
+    border: 1px solid #4386d5;
+}
+
+.btn-editar:hover {
+    background: #1c65b5;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 0 8px rgba(67, 134, 213, 0.25);
+}
+
+.btn-excluir {
+    background: #8f0c1b;
+    border: 1px solid #ff1026;
+}
+
+.btn-excluir:hover {
+    background: #bd1025;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 0 8px rgba(255, 16, 38, 0.2);
+}
+
+/* 18. MENSAGENS */
+
+.mensagem {
+    min-height: 24px;
+
+    margin-top: 16px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    overflow-wrap: anywhere;
+}
+
+/* 19. LISTA DE DISCIPLINAS */
+
+.lista-disciplinas {
+    width: 100%;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 30px;
+}
+
+#listaDisciplinas button,
+.botao-disciplina {
+    width: 250px !important;
+
+    min-height: 70px !important;
+    height: auto !important;
+
+    padding: 15px !important;
+
+    border: 1px solid #ff1026 !important;
+    border-radius: 15px !important;
+
+    background: linear-gradient(
+        145deg,
+        rgba(5, 22, 55, 0.98),
+        rgba(2, 10, 31, 0.98)
+    ) !important;
+
+    color: #e3ebff !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 20px !important;
+    font-weight: bold !important;
+
+    line-height: normal !important;
+
+    text-align: center !important;
+
+    cursor: pointer !important;
+
+    transition:
+        background 0.3s,
+        color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s !important;
+
+    box-shadow: 0 0 12px rgba(255, 0, 30, 0.08) !important;
+
+    outline: none !important;
+
+    appearance: none !important;
+    -webkit-appearance: none !important;
+}
+
+#listaDisciplinas button:hover,
+.botao-disciplina:hover {
+    background: linear-gradient(90deg, #8d0b1b, #570713) !important;
+
+    color: white !important;
+
+    transform: translateY(-3px) !important;
+
+    box-shadow: 0 0 16px rgba(255, 0, 30, 0.25) !important;
+}
+
+#listaDisciplinas button:active,
+.botao-disciplina:active {
+    transform: translateY(-1px) !important;
+}
+
+/* 20. ACESSIBILIDADE */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #ff5263;
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* 21. TABLETS */
+
+@media (max-width: 1000px) {
+    .menu {
+        width: 300px;
+        max-width: 85vw;
+    }
+
+    .menu > button {
+        max-width: 260px;
+        font-size: 15px;
+    }
+
+    .icones {
+        width: 100%;
+        gap: 28px;
+    }
+
+    .lista-disciplinas {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .gerenciamento {
+        width: 94%;
+    }
+}
+
+/* 22. MOBILE */
+
+@media (max-width: 700px) {
+    .topo {
+        height: 70px;
+        padding: 0 10px;
+    }
+
+    .container {
+        flex-direction: column;
+
+        min-height: calc(100vh - 70px);
+        min-height: calc(100dvh - 70px);
+    }
+
+    .botao-menu {
+        top: 12px;
+        left: 12px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 27px;
+    }
+
+    .logo-sacm {
+        width: 65px;
+        margin-left: 48px;
+    }
+
+    .logo-sacm img {
+        width: 90px;
+        max-height: 58px;
+    }
+
+    .logo-ceep {
+        width: 60px;
+    }
+
+    .logo-ceep img {
+        width: 60px;
+        max-height: 50px;
+    }
+
+    .titulo {
+        min-width: 100px;
+        min-height: 34px;
+
+        padding: 0 12px;
+    }
+
+    .titulo h2 {
+        font-size: 16px;
+    }
+
+    .menu {
+        top: 70px;
+
+        width: 280px;
+        max-width: 85vw;
+
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+
+        padding: 12px 10px 18px;
+    }
+
+    .perfil {
+        padding: 12px 8px;
+    }
+
+    .foto-perfil {
+        width: 90px;
+        height: 90px;
+    }
+
+    .foto-perfil img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .menu .home {
+        flex-direction: row;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 30px;
+
+        margin-bottom: 16px;
+    }
+
+    .menu .home a {
+        flex: 0 0 auto;
+    }
+
+    .menu .home img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icones {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 28px;
+    }
+
+    .icones img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .menu > button {
+        width: 100%;
+        max-width: 250px;
+
+        min-height: 42px;
+
+        padding: 10px 12px;
+
+        font-size: 15px;
+
+        text-align: center;
+        justify-content: center;
+    }
+
+    .conteudo {
+        width: 100%;
+        min-height: 60vh;
+    }
+
+    .gerenciamento {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .cabecalho-tabela {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+    .cabecalho-tabela h2 {
+        font-size: 22px;
+    }
+
+    .formulario-gerenciamento {
+        padding: 14px;
+    }
+
+    .formulario {
+        padding: 14px;
+    }
+
+    .formulario > input[type="text"],
+    .formulario > input[type="number"] {
+        width: 100%;
+        max-width: none;
+    }
+
+    .grupo-opcoes {
+        padding: 12px;
+    }
+
+    .opcoes-checkbox {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .acoes-formulario {
+        flex-direction: column;
+    }
+
+    .acoes-formulario button {
+        width: 100%;
+    }
+
+    .tabela-responsiva {
+        max-width: 100%;
+    }
+
+    .tabela-gerenciar-disciplinas {
+        min-width: 800px;
+    }
+
+    .lista-disciplinas {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    #listaDisciplinas button,
+    .botao-disciplina {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+}
+
+/* 23. CELULAR PEQUENO */
+
+@media (max-width: 450px) {
+    .topo {
+        gap: 5px;
+        padding: 0 8px;
+    }
+
+    .botao-menu {
+        top: 12px;
+        left: 8px;
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 24px;
+    }
+
+    .logo-sacm {
+        width: 52px;
+        margin-left: 40px;
+    }
+
+    .logo-sacm img {
+        width: 72px;
+        max-height: 48px;
+    }
+
+    .logo-ceep {
+        width: 48px;
+    }
+
+    .logo-ceep img {
+        width: 48px;
+        max-height: 42px;
+    }
+
+    .titulo {
+        min-width: 85px;
+        min-height: 30px;
+
+        padding: 0 8px;
+    }
+
+    .titulo h2 {
+        font-size: 14px;
+    }
+
+    .menu {
+        width: 270px;
+        max-width: 85vw;
+    }
+
+    .menu > button {
+        max-width: 240px;
+        font-size: 14px;
+    }
+
+    .formulario-gerenciamento {
+        padding: 12px;
+    }
+
+    .formulario {
+        padding: 12px;
+    }
+
+    .grupo-opcoes legend {
+        font-size: 15px;
+    }
+
+    .opcoes-checkbox label {
+        font-size: 14px;
+    }
+
+    #listaDisciplinas button,
+    .botao-disciplina {
+        width: 100% !important;
+        max-width: 280px !important;
+
+        font-size: 18px !important;
+    }
+
+    .mensagem {
+        font-size: 14px;
+    }
+}
+
+/* 24. REDUÇÃO DE ANIMAÇÕES */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

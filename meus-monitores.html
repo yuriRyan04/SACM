@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACM - Meus Monitores</title>
+    <link rel="stylesheet" href="styles 8.css">
+</head>
+<body>
+
+<header class="topo">
+    <button class="botao-menu" onclick="abrirMenu()" aria-label="Abrir menu">☰</button>
+    <div class="logo-sacm"><img src="./img/SACM.png" alt="Logo SACM"></div>
+    <div class="titulo"><h2>MEUS MONITORES</h2></div>
+    <div class="logo-ceep"><img src="./img/CEEP.png" alt="Logo CEEP"></div>
+</header>
+
+<aside class="menu" id="menu">
+    <div class="perfil">
+        <div class="foto-perfil">
+            <label for="inputFoto">
+                <img id="fotoUsuario" src="./img/aluno.png" alt="Foto do professor">
+                <span class="icone-camera">📷</span>
+            </label>
+            <input type="file" id="inputFoto" accept="image/jpeg,image/png,image/webp">
+        </div>
+
+        <div class="dados-perfil">
+            <h3 id="nomeUsuario">Carregando...</h3>
+            <p id="linhaTurma" hidden>Turma: <span id="turmaUsuario">—</span></p>
+            <p>Matrícula: <span id="matriculaUsuario">—</span></p>
+        </div>
+    </div>
+
+    <div class="separador"></div>
+
+    <div class="home">
+        <a href="index.html" aria-label="Início">
+            <img src="./img/casa.png" alt="Início">
+        </a>
+        
+        <a href="#" onclick="history.back(); return false;">
+            <img src="./img/seta.png" alt="Seta">
+        </a>   
+
+    </div>
+    </div>
+
+    <button class="botao-menu-lateral"
+        onclick="window.location.href='professor.html'">
+        Minhas Disciplinas
+    </button>
+    <button class="botao-menu-lateral"
+                onclick="location.href='cadastro-monitor.html'">
+            Gerenciamento de Monitores
+        </button>
+        <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos-professor.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+
+</aside>
+
+<main class="conteudo">
+    <div class="monitores-container">
+
+        <header class="monitores-topo">
+            <div>
+                <h1 id="tituloDisciplina">Meus Monitores</h1>
+                <p>Consulte os alunos que atuam como monitores nesta disciplina.</p>
+            </div>
+            <button type="button" id="btnAtualizar">↻ Atualizar lista</button>
+        </header>
+
+        <section class="monitores-resumo">
+            <article class="resumo-card">
+                <span>Total de monitores</span>
+                <h2 id="totalMonitores">0</h2>
+            </article>
+            <article class="resumo-card">
+                <span>Disciplinas atendidas</span>
+                <h2 id="totalDisciplinas">0</h2>
+            </article>
+        </section>
+
+        <section class="monitores-painel">
+            <h2>Lista de monitores</h2>
+            <p>Pesquise por nome, matrícula ou turma.</p>
+
+            <div class="monitores-filtros">
+                <input type="search" id="pesquisa"
+                    placeholder="Pesquisar monitor..." aria-label="Pesquisar monitor">
+
+                <select id="filtroDisciplina" aria-label="Disciplina selecionada">
+                    <option value="">Carregando disciplina...</option>
+                </select>
+            </div>
+
+            <div class="tabela-responsiva">
+                <table class="tabela-monitores">
+                    <thead>
+                        <tr>
+                            <th>Nome do monitor</th>
+                            <th>Matrícula</th>
+                            <th>Turma</th>
+                            <th>Disciplina</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaMonitores">
+                        <tr>
+                            <td colspan="4" class="mensagem-lista">
+                                Carregando monitores...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="./js/menu.js"></script>
+<script src="./js/perfil.js"></script>
+<script src="./js/meus-monitores.js"></script>
+</body>
+</html>

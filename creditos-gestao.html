@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Créditos da Equipe | SACM</title>
+
+    <!-- Estilo exclusivo da página de créditos -->
+    <link rel="stylesheet" href="styles 13.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SACM -->
+    <header class="topo">
+
+<button
+            class="botao-menu"
+            onclick="abrirMenu()"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
+
+    <div class="logo-sacm">
+
+            <img
+                src="./img/SACM.png"
+                alt="Logo SACM"
+            >
+
+        </div>
+
+
+        <div class="titulo">
+
+            <h2>CREDITOS DOS CRIADORES</h2>
+
+        </div>
+
+
+        <div class="logo-ceep">
+
+            <img
+                src="./img/CEEP.png"
+                alt="Logo CEEP"
+            >
+
+        </div>
+
+</header>
+
+
+<div class="container">
+
+    <aside class="menu" id="menu">
+
+
+    <div class="perfil">
+
+        <div class="foto-perfil">
+
+            <label for="inputFoto">
+
+                <img
+                    id="fotoUsuario"
+                    src="./img/aluno.png"
+                    alt="Foto de perfil"
+                >
+
+                <span class="icone-camera">
+                    📷
+                </span>
+
+            </label>
+
+            <input
+                type="file"
+                id="inputFoto"
+                accept="image/jpeg,image/png,image/webp"
+            >
+
+        </div>
+
+        <div class="dados-perfil">
+
+            <h3 id="nomeUsuario">
+                Carregando...
+            </h3>
+
+            <p>
+                Turma:
+                <span id="turmaUsuario">
+                    ...
+                </span>
+            </p>
+
+            <p>
+                Matrícula:
+                <span id="matriculaUsuario">
+                    ...
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+ 
+
+    <div class="separador"></div>
+
+
+
+    <div class="home">
+
+        <a href="index.html">
+
+            <img src="./img/casa.png" alt="Casa">
+
+        </a>
+        
+         <a href="#" onclick="history.back(); return false;">
+            <img src="./img/seta.png" alt="Seta">
+        </a>   
+
+    </div>
+
+
+   
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='monitorias.html'"
+    >
+        MINHAS MONITORIAS
+    </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='meus-agendamentos.html'"
+        >
+            MEUS AGENDAMENTOS
+        </button>
+   
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Linguagens.html'"
+    >
+        LINGUAGENS
+    </button>
+
+
+   
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Natureza.html'"
+    >
+        NATUREZA
+    </button>
+
+
+   
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Humanas.html'"
+    >
+        HUMANAS
+    </button>
+
+
+  
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Matematica.html'"
+    >
+        MATEMÁTICA
+    </button>
+
+
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Info.html'"
+    >
+        INFORMÁTICA
+    </button>
+
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='Redes.html'"
+    >
+        REDES DE COMPUTADORES
+    </button>
+    <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos.html'"
+    >
+        Creditos DOS CRIADORES
+    </button>
+
+</aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="creditos-principal">
+
+        <!-- APRESENTAÇÃO -->
+        <section class="creditos-introducao">
+
+            <span class="etiqueta-introducao">
+                <span class="ponto-etiqueta"></span>
+                DESENVOLVIDO EM EQUIPE
+            </span>
+
+            <h2>
+                Por trás do
+                <span class="texto-destaque">SACM</span>
+            </h2>
+
+            <p class="subtitulo-introducao">
+                Conheça as pessoas que contribuíram para transformar
+                uma ideia em um sistema de auxílio e controle de monitoria.
+            </p>
+
+            <div class="linha-decorativa">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </section>
+
+        <!-- TÍTULO DA EQUIPE -->
+        <section class="secao-equipe">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="texto-pequeno">NOSSA EQUIPE</span>
+                    <h2>Quem desenvolveu</h2>
+                </div>
+
+                <span class="contador-equipe">
+                    03 INTEGRANTES
+                </span>
+            </div>
+
+            <!-- TRÊS COLUNAS -->
+            <div class="grade-integrantes">
+
+                <!-- INTEGRANTE 1 -->
+                <article class="cartao-integrante">
+
+                    <div class="cartao-linha-superior"></div>
+
+                    <div class="numero-integrante">01</div>
+
+                    <div class="foto-container">
+                        <img
+                            src="./img/equipe/integrante1.jpg"
+                            alt="Foto do primeiro integrante"
+                            class="foto-integrante"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <span class="identificador-integrante">
+                        EQUIPE SACM
+                    </span>
+
+                    <h3 class="nome-integrante">
+                        Nome do Primeiro Integrante
+                    </h3>
+
+                    <p class="funcao-integrante">
+                        Desenvolvimento do sistema
+                    </p>
+
+                    <div class="divisor-cartao"></div>
+
+                    <div class="informacoes-integrante">
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Participação</h4>
+                                <p>
+                                    Descreva aqui a principal contribuição
+                                    dessa pessoa para o projeto.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Habilidades</h4>
+                                <p>
+                                    HTML, CSS, JavaScript ou outras
+                                    tecnologias utilizadas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">✦</span>
+                            <div>
+                                <h4>Sobre</h4>
+                                <p>
+                                    Escreva uma breve apresentação,
+                                    seus interesses ou algo que represente você.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="frase-integrante">
+                        <span>“</span>
+                        <p>
+                            Uma frase que represente sua jornada no projeto.
+                        </p>
+                    </div>
+
+                </article>
+
+                <!-- INTEGRANTE 2 -->
+                <article class="cartao-integrante">
+
+                    <div class="cartao-linha-superior"></div>
+
+                    <div class="numero-integrante">02</div>
+
+                    <div class="foto-container">
+                        <img
+                            src="./img/equipe/integrante2.jpg"
+                            alt="Foto do segundo integrante"
+                            class="foto-integrante"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <span class="identificador-integrante">
+                        EQUIPE SACM
+                    </span>
+
+                    <h3 class="nome-integrante">
+                        Nome do Segundo Integrante
+                    </h3>
+
+                    <p class="funcao-integrante">
+                        Desenvolvimento do sistema
+                    </p>
+
+                    <div class="divisor-cartao"></div>
+
+                    <div class="informacoes-integrante">
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Participação</h4>
+                                <p>
+                                    Descreva aqui a principal contribuição
+                                    dessa pessoa para o projeto.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Habilidades</h4>
+                                <p>
+                                    Informe as tecnologias e habilidades
+                                    que essa pessoa utilizou.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">✦</span>
+                            <div>
+                                <h4>Sobre</h4>
+                                <p>
+                                    Escreva uma breve apresentação,
+                                    seus interesses ou algo que represente você.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="frase-integrante">
+                        <span>“</span>
+                        <p>
+                            Uma frase que represente sua jornada no projeto.
+                        </p>
+                    </div>
+
+                </article>
+
+                <!-- INTEGRANTE 3 -->
+                <article class="cartao-integrante">
+
+                    <div class="cartao-linha-superior"></div>
+
+                    <div class="numero-integrante">03</div>
+
+                    <div class="foto-container">
+                        <img
+                            src="./img/equipe/integrante3.jpg"
+                            alt="Foto do terceiro integrante"
+                            class="foto-integrante"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <span class="identificador-integrante">
+                        EQUIPE SACM
+                    </span>
+
+                    <h3 class="nome-integrante">
+                        Nome do Terceiro Integrante
+                    </h3>
+
+                    <p class="funcao-integrante">
+                        Desenvolvimento do sistema
+                    </p>
+
+                    <div class="divisor-cartao"></div>
+
+                    <div class="informacoes-integrante">
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Participação</h4>
+                                <p>
+                                    Descreva aqui a principal contribuição
+                                    dessa pessoa para o projeto.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">⌘</span>
+                            <div>
+                                <h4>Habilidades</h4>
+                                <p>
+                                    Informe as tecnologias e habilidades
+                                    que essa pessoa utilizou.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="informacao">
+                            <span class="icone-informacao">✦</span>
+                            <div>
+                                <h4>Sobre</h4>
+                                <p>
+                                    Escreva uma breve apresentação,
+                                    seus interesses ou algo que represente você.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="frase-integrante">
+                        <span>“</span>
+                        <p>
+                            Uma frase que represente sua jornada no projeto.
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- SOBRE O PROJETO -->
+        <section class="sobre-projeto">
+
+            <div class="sobre-icone">
+                <span>✦</span>
+            </div>
+
+            <div class="sobre-texto">
+                <span class="texto-pequeno">NOSSO PROPÓSITO</span>
+
+                <h2>Uma ideia construída em equipe.</h2>
+
+                <p>
+                    O SACM — Sistema de Auxílio e Controle de Monitoria —
+                    foi idealizado para facilitar o acesso às monitorias,
+                    melhorar a organização das informações e aproximar
+                    alunos, monitores e professores.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- RODAPÉ INSTITUCIONAL -->
+        <footer class="rodape-creditos">
+
+            <img
+                src="./img/SACM.png"
+                alt="Logo SACM"
+                class="logo-rodape"
+                loading="lazy"
+            >
+
+            <div class="rodape-informacoes">
+                <strong>
+                    Centro Estadual de Educação Profissional
+                    Professora Lourdinha Guerra
+                </strong>
+
+                <span>Curso Técnico em Informática • 2026</span>
+
+                <span>
+                    Projeto de conclusão de curso — SACM
+                </span>
+            </div>
+
+            <span class="rodape-direitos">
+                Desenvolvido pela equipe SACM.
+            </span>
+
+        </footer>
+
+    </main>
+
+    <!-- JavaScript já utilizado no SACM -->
+    <script src="./js/menu.js"></script>
+    <script src="./js/perfil.js"></script>
+
+    <!-- Comportamentos exclusivos desta página -->
+    <script src="./js/creditos.js"></script>
+
+</body>
+</html>

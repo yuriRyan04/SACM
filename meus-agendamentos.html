@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SACM - Meus Agendamentos</title>
+
+
+    <link rel="stylesheet" href="styles 9.css">
+</head>
+
+<body>
+
+<header class="topo">
+
+    <button
+        class="botao-menu"
+        onclick="abrirMenu()"
+        aria-label="Abrir menu"
+    >☰</button>
+
+    <div class="logo-sacm">
+        <img src="./img/SACM.png" alt="Logo SACM">
+    </div>
+
+    <div class="titulo">
+        <h2>MEUS AGENDAMENTOS</h2>
+    </div>
+
+    <div class="logo-ceep">
+        <img src="./img/CEEP.png" alt="Logo CEEP">
+    </div>
+
+</header>
+
+<div
+    class="fundo-menu"
+    id="fundoMenu"
+    onclick="fecharMenu()"
+></div>
+
+<div class="container">
+
+    <aside class="menu" id="menu">
+
+        <div class="perfil">
+
+            <div class="foto-perfil">
+
+                <label for="inputFoto">
+                    <img
+                        id="fotoUsuario"
+                        src="./img/aluno.png"
+                        alt="Foto de perfil"
+                    >
+                    <span class="icone-camera">📷</span>
+                </label>
+
+                <input
+                    type="file"
+                    id="inputFoto"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+            </div>
+
+            <div class="dados-perfil">
+
+                <h3 id="nomeUsuario">Carregando...</h3>
+
+                <p>
+                    Turma:
+                    <span id="turmaUsuario">...</span>
+                </p>
+
+                <p>
+                    Matrícula:
+                    <span id="matriculaUsuario">...</span>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="separador"></div>
+
+        <div class="home">
+
+            <a href="index.html" title="Início">
+                <img src="./img/casa.png" alt="Início">
+            </a>
+
+            <a
+                href="#"
+                onclick="history.back(); return false;"
+                title="Voltar"
+            >
+                <img src="./img/seta.png" alt="Voltar">
+            </a>
+
+        </div>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='monitorias.html'"
+        >
+            MINHAS MONITORIAS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='meus-agendamentos.html'"
+        >
+            MEUS AGENDAMENTOS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Linguagens.html'"
+        >
+            LINGUAGENS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Natureza.html'"
+        >
+            NATUREZA
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Humanas.html'"
+        >
+            HUMANAS
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Matematica.html'"
+        >
+            MATEMÁTICA
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Info.html'"
+        >
+            INFORMÁTICA
+        </button>
+
+        <button
+            class="botao-menu-lateral"
+            onclick="location.href='Redes.html'"
+        >
+            REDES DE COMPUTADORES
+        </button>
+
+        <button
+        class="botao-menu-lateral"
+        onclick="window.location.href='creditos.html'"
+    >
+        CRÉDITOS DOS CRIADORES
+    </button>
+    </aside>
+
+    <main class="conteudo">
+
+        <section class="cabecalho-pagina">
+
+            <h1>MEUS AGENDAMENTOS</h1>
+
+            <p>
+                Consulte as monitorias que você agendou,
+                confira os horários e acompanhe a situação
+                de cada atendimento.
+            </p>
+
+        </section>
+
+        <!-- RESUMO DOS AGENDAMENTOS -->
+
+        <section class="resumo">
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">📚</div>
+
+                <div>
+                    <span>Total de agendamentos</span>
+                    <strong id="totalAgendamentos">0</strong>
+                </div>
+
+            </div>
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">📅</div>
+
+                <div>
+                    <span>Agendados</span>
+                    <strong id="totalAgendados">0</strong>
+                </div>
+
+            </div>
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">✓</div>
+
+                <div>
+                    <span>Realizados</span>
+                    <strong id="totalRealizados">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LISTA DE AGENDAMENTOS -->
+
+        <section class="minhas-disciplinas">
+
+            <div class="titulo-disciplinas">
+
+                <div>
+                    <h2>Minhas Monitorias Agendadas</h2>
+
+                    <p>
+                        Aqui estão os atendimentos que você marcou.
+                    </p>
+                </div>
+
+                <select id="filtroStatus" aria-label="Filtrar agendamentos">
+                    <option value="todos">Todos</option>
+                    <option value="agendado">Agendados</option>
+                    <option value="realizado">Realizados</option>
+                    <option value="cancelado">Cancelados</option>
+                </select>
+
+            </div>
+
+            <div
+                id="mensagem"
+                class="mensagem"
+                role="status"
+                aria-live="polite"
+            >
+                Carregando seus agendamentos...
+            </div>
+
+            <div
+                id="listaAgendamentos"
+                class="lista-agendamentos"
+            ></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="./js/meus-agendamentos.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/perfil.js"></script>
+
+</body>
+</html>
